@@ -8,7 +8,11 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 .
 ├── .claude/          # Cấu hình Claude Code cho chính repo này (settings, skills được link vào)
 ├── agents/           # Định nghĩa subagent (vai trò chuyên biệt: reviewer, planner, ...)
-├── docs/             # Tài liệu hướng dẫn: cách dùng, cách viết skill, quy ước
+├── architectures/    # Kiến trúc mẫu, mỗi kiến trúc 1 thư mục: architectures/<ten-kien-truc>/
+├── docs/
+│   └── guides/
+│       ├── engineering/  # Hướng dẫn kỹ thuật
+│       └── operational/  # Hướng dẫn vận hành
 ├── scripts/          # Script tiện ích: cài skills, tạo skill mới, ...
 ├── skills/           # Nguồn chính của các skill
 │   ├── claude/       # Skill cho Claude Code (mỗi skill là 1 thư mục có SKILL.md)
@@ -33,4 +37,4 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 ./scripts/new-skill.sh claude ten-skill-moi
 ```
 
-Sau đó chỉnh file `skills/claude/ten-skill-moi/SKILL.md`. Xem hướng dẫn chi tiết tại [docs/skill-authoring.md](docs/skill-authoring.md).
+Sau đó chỉnh file `skills/claude/ten-skill-moi/SKILL.md`. Xem hướng dẫn chi tiết tại [docs/guides/engineering/skill-authoring.md](docs/guides/engineering/skill-authoring.md).

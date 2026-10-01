@@ -1,3 +1,8 @@
 # Docs
 
-- [skill-authoring.md](skill-authoring.md) — Cách viết một skill tốt cho người non-tech.
+| Thư mục | Nội dung |
+|---------|----------|
+| [guides/engineering/](guides/engineering/) | Hướng dẫn kỹ thuật: viết skill, quy ước code, cách làm việc với AI agent |
+| [guides/operational/](guides/operational/) | Hướng dẫn vận hành: cài đặt, deploy, backup, xử lý sự cố |
+
+Tài liệu kiến trúc nằm riêng ở [`/architectures`](../architectures/).

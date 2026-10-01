@@ -9,3 +9,5 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại ở đây.
 - Khung thư mục ban đầu: `.claude/`, `agents/`, `docs/`, `scripts/`, `skills/claude/`, `skills/codex/`.
 - Template skill cho Claude (`skills/claude/_template`).
 - Script `install-skills.sh` và `new-skill.sh`.
+- `docs/guides/engineering`, `docs/guides/operational` cho tài liệu hướng dẫn theo mảng.
+- `architectures/` chứa kiến trúc mẫu, kèm `_template`.

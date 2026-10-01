@@ -1,11 +1,13 @@
 # Bắt đầu: cài Claude, Git và bộ skill
 
-Đây là phần **duy nhất bạn phải tự làm** trước khi Claude giúp được bạn. Mất khoảng 15 phút.
-Sau 3 bước này, Claude sẽ lo phần còn lại.
+Đây là phần **duy nhất bạn phải tự làm** trước khi Claude giúp được bạn. Mất khoảng 20–30 phút.
+Sau các bước này, Claude sẽ lo phần còn lại.
 
 ```
-Bước 1: Cài Claude  →  Bước 2: Cài Git  →  Bước 3: Cài bộ skill  →  Claude thiết lập phần còn lại
+1. Cài Claude → 2. Cài Git → 3. Tài khoản GitHub + xin quyền → 4. Tải bộ skill → 5. Claude cài skill → 6. Claude thiết lập phần còn lại
 ```
+
+> Bộ skill hiện đang ở chế độ **riêng tư** (private): chỉ người được mời mới tải được. Vì vậy bạn cần tài khoản GitHub và được người quản lý mời trước.
 
 ## Bước 1 — Cài Claude
 
@@ -15,7 +17,7 @@ Bước 1: Cài Claude  →  Bước 2: Cài Git  →  Bước 3: Cài bộ skil
 
 ## Bước 2 — Cài Git
 
-**Git là gì?** Công cụ để lưu lại từng bước làm và tải code từ GitHub về. Không có Git thì không lấy được bộ skill, cũng không làm việc được với code.
+**Git là gì?** Công cụ để lưu lại từng bước làm với code. Claude cần nó để làm việc với bạn.
 
 ### macOS
 1. Mở Terminal (xem [mo-terminal.md](mo-terminal.md)).
@@ -32,17 +34,30 @@ Bước 1: Cài Claude  →  Bước 2: Cài Git  →  Bước 3: Cài bộ skil
 2. Mở file vừa tải → bấm **Next** liên tục, **giữ nguyên mọi lựa chọn mặc định** → **Install** → **Finish**.
 3. **Tắt hẳn ứng dụng Claude rồi mở lại**, để Claude nhận ra Git vừa cài.
 
-## Bước 3 — Cài bộ skill
+## Bước 3 — Tài khoản GitHub và xin quyền truy cập
 
-Mở Claude, vào phần **Code**, chọn một thư mục làm việc bất kỳ (ví dụ thư mục `Documents`), rồi **dán nguyên câu sau** vào ô chat:
+1. Tạo tài khoản GitHub theo [tao-tai-khoan-github.md](tao-tai-khoan-github.md) (đã có thì bỏ qua).
+2. Gửi **username GitHub** của bạn cho người quản lý bộ skill để được mời.
+3. Bạn sẽ nhận email **"invited you to collaborate on DuyMan83/non-tech-engineering"** → bấm **View invitation** → **Accept invitation**.
+
+## Bước 4 — Tải bộ skill
+
+1. Đăng nhập GitHub trên trình duyệt, mở **https://github.com/DuyMan83/non-tech-engineering**
+   (thấy lỗi 404 nghĩa là bạn chưa đăng nhập hoặc chưa chấp nhận lời mời ở Bước 3).
+2. Bấm nút xanh **Code** → **Download ZIP**.
+3. File `non-tech-engineering-main.zip` sẽ nằm trong thư mục **Downloads**. **Không cần giải nén** — Claude sẽ làm.
+
+## Bước 5 — Nhờ Claude cài bộ skill
+
+Mở Claude, vào phần **Code**, chọn thư mục làm việc là **Downloads**, rồi **dán nguyên câu sau** vào ô chat:
 
 ```
-Cài bộ skill non-tech-engineering cho tôi: tải repo https://github.com/DuyMan83/non-tech-engineering.git về thư mục ~/non-tech-engineering (nếu đã có thì cập nhật bản mới nhất), sau đó chạy scripts/install-skills.sh claude trong repo đó. Xong thì báo cho tôi bằng lời đơn giản.
+Cài bộ skill non-tech-engineering cho tôi: trong thư mục Downloads có file non-tech-engineering-main.zip (hoặc thư mục non-tech-engineering-main nếu máy đã tự giải nén). Giải nén nếu cần, chuyển nội dung vào thư mục ~/non-tech-engineering (nếu thư mục đó đã có thì hỏi tôi trước khi thay), rồi chạy scripts/install-skills.sh claude trong đó. Xong thì báo cho tôi bằng lời đơn giản.
 ```
 
 Claude có thể hỏi xin phép chạy lệnh → bấm **Cho phép / Allow**.
 
-## Bước 4 — Để Claude thiết lập phần còn lại
+## Bước 6 — Để Claude thiết lập phần còn lại
 
 Khi Claude báo cài xong, gõ:
 
@@ -50,8 +65,16 @@ Khi Claude báo cài xong, gõ:
 Thiết lập môi trường cho tôi
 ```
 
-Claude sẽ kiểm tra máy, cài các công cụ còn thiếu (VS Code, Node.js, Firebase…) và hướng dẫn bạn tạo tài khoản GitHub, Firebase từng bước một.
+Claude sẽ kiểm tra máy, cài các công cụ còn thiếu (VS Code, Node.js, Firebase…) và hướng dẫn bạn đăng nhập GitHub, Firebase từng bước một.
 
 ---
 
 **Gặp khó?** Chụp màn hình gửi cho Claude, hoặc cho người hướng dẫn của bạn.
+
+## Dành cho người quản lý bộ skill
+
+Mời người dùng mới:
+1. Mở https://github.com/DuyMan83/non-tech-engineering/settings/access
+2. **Add people** → nhập username GitHub của họ → chọn quyền **Read** → gửi lời mời.
+
+Cập nhật bộ skill cho người dùng: hiện tại họ phải tải lại ZIP và làm lại Bước 5. Khi repo chuyển sang công khai, Bước 3–5 sẽ rút gọn thành một câu nhờ Claude tải bằng Git.

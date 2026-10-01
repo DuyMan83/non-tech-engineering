@@ -126,6 +126,7 @@ tai_khoan:
     goi: [co-ban, web, day-du]
     ai_lam: nguoi
     huong_dan: tao-tai-khoan-github.md
+    ghi_chu: Khi repo bộ skill còn private, người dùng đã tạo tài khoản ở getting-started.md — hỏi "bạn đã có tài khoản GitHub chưa?" trước khi hướng dẫn.
     thu_thap: [ho_ten, github_username, github_email]   # hỏi lần lượt, mỗi lần 1 câu
 
   - id: git-identity

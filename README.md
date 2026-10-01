@@ -24,7 +24,7 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 
 ## Bắt đầu nhanh
 
-**Người dùng non-tech:** làm theo [docs/guides/operational/getting-started.md](docs/guides/operational/getting-started.md) (cài Claude → cài Git → cài bộ skill → "Thiết lập môi trường cho tôi").
+**Người dùng non-tech:** làm theo [docs/guides/operational/getting-started.md](docs/guides/operational/getting-started.md) (cài Claude → cài Git → tài khoản GitHub + được mời vào repo → tải ZIP → nhờ Claude cài skill → "Thiết lập môi trường cho tôi").
 
 **Người phát triển:**
 ```bash

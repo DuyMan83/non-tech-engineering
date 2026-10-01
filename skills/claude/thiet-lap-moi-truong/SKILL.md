@@ -21,8 +21,10 @@ Skill này thường chạy **trước khi** có AGENTS.md / CLAUDE.md, nên t�
 
 Mỗi khi cần người dùng làm gì, trình bày đúng 3 phần:
 
-1. **Dòng in đậm** — tiêu đề yêu cầu, ngắn, bắt đầu bằng động từ.
-2. **Chữ thường** — 1–2 câu: việc này để làm gì, sẽ thấy gì, (nếu có) vì sao Claude không tự làm được.
+1. **Dòng in đậm** — tiêu đề nói **việc này để làm gì** (mục đích/kết quả người dùng nhận được), không phải tên hành động. Ví dụ: "Cho máy quyền lưu code lên GitHub", không phải "Chạy gh auth login".
+2. **Chữ thường** — giải thích ngắn (1–3 câu):
+   - **Why**: vì sao cần, (nếu có) vì sao Claude không tự làm được.
+   - **How**: sẽ làm thế nào — bạn làm gì, Claude làm gì, sẽ thấy gì.
 3. **Lệnh hoặc các bước**:
    - **Lệnh** → để trong khối code riêng (giao diện Claude tự có nút copy). Mỗi khối **chỉ 1 lệnh**, không có `$`, không chú thích bên trong, để người dùng copy là chạy được ngay.
    - **Các bước** → danh sách đánh số `1. 2. 3.`, mỗi bước 1 hành động; tên nút/ô in đậm, kèm "để làm gì" ngắn nếu chưa hiển nhiên.
@@ -30,11 +32,10 @@ Mỗi khi cần người dùng làm gì, trình bày đúng 3 phần:
 Ví dụ — lệnh:
 
 ~~~markdown
-**Đăng nhập GitHub trên máy**
+**Cho máy quyền lưu code lên GitHub**
 
-Để máy được phép lưu code lên GitHub của bạn. Claude không tự chạy được vì lệnh cần bạn xác nhận trên trình duyệt.
-
-Mở Terminal, dán lệnh này rồi nhấn Enter:
+Cần làm 1 lần để sau này mỗi lần lưu code không phải gõ mật khẩu; Claude không tự làm được vì cần bạn xác nhận trên trình duyệt.
+Bạn dán lệnh dưới đây vào Terminal → một mã 8 ký tự hiện ra → trình duyệt mở trang GitHub → bạn nhập mã và bấm cho phép.
 
 ```
 gh auth login --hostname github.com --git-protocol https --web
@@ -44,9 +45,10 @@ gh auth login --hostname github.com --git-protocol https --web
 Ví dụ — các bước:
 
 ~~~markdown
-**Cài Node.js**
+**Để máy chạy được app web**
 
-Node.js là bộ máy chạy app web. Cửa sổ cài đặt sắp hiện ra.
+Máy cần Node.js — bộ máy chạy app web — thì mới chạy thử app bạn làm.
+Claude đã tải file cài và mở lên; bạn chỉ cần bấm qua cửa sổ cài đặt:
 
 1. Bấm **Continue** ở các màn hình giới thiệu.
 2. Bấm **Agree** — để đồng ý điều khoản sử dụng.

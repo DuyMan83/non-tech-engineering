@@ -8,7 +8,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const BO_QUA = new Set(["node_modules", ".next", "out", ".firebase", "README.md", "next-env.d.ts", "tsconfig.tsbuildinfo"]);
+const BO_QUA = new Set(["node_modules", ".next", "out", ".firebase", ".expo", "dist", "README.md", "next-env.d.ts", "expo-env.d.ts", "tsconfig.tsbuildinfo"]);
+const DOCS_URL = "https://github.com/DuyMan83/non-tech-engineering/blob/main/docs/architectures/";
 const DEMO_ID_KHUNG = "demo-khung-du-an";
 
 function loi(message) {
@@ -71,7 +72,10 @@ function main() {
   fs.mkdirSync(kienTruc, { recursive: true });
   fs.copyFileSync(path.join(repo, "docs", "architectures", "_chung", "clean-rules.md"), path.join(kienTruc, "clean-rules.md"));
   fs.copyFileSync(path.join(repo, "docs", "architectures", a["kien-truc"], "rules.md"), path.join(kienTruc, "rules.md"));
-  thayTrongFile(path.join(kienTruc, "rules.md"), [["../_chung/clean-rules.md", "clean-rules.md"]]);
+  thayTrongFile(path.join(kienTruc, "rules.md"), [
+    ["../_chung/clean-rules.md", "clean-rules.md"],
+    ["](../", `](${DOCS_URL}`], // link sang kiến trúc khác -> trỏ về repo
+  ]);
 
   // 3. Điền thông tin dự án
   const homNay = new Date().toISOString().slice(0, 10);
@@ -90,6 +94,13 @@ function main() {
   for (const f of ["src/app/layout.tsx", "public/manifest.webmanifest"]) {
     thayTrongFile(path.join(dich, f), [["Khung dự án", a.ten]]);
   }
+  // Mobile: tên app, slug, mã định danh trên store (com.<slug không gạch>.app — đổi được TRƯỚC lần lên store đầu tiên)
+  const appId = `com.${slug.replace(/-/g, "")}.app`;
+  thayTrongFile(path.join(dich, "app.config.ts"), [
+    ['const APP_NAME = "Khung dự án";', `const APP_NAME = ${JSON.stringify(a.ten)};`],
+    ['const APP_SLUG = "khung-du-an-mobile";', `const APP_SLUG = "${slug}";`],
+    ['const APP_ID = "com.example.khungduanmobile";', `const APP_ID = "${appId}";`],
+  ]);
   const lock = path.join(dich, "package-lock.json");
   if (fs.existsSync(lock)) {
     const l = JSON.parse(fs.readFileSync(lock, "utf8"));

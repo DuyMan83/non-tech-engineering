@@ -14,7 +14,7 @@ Nếu chỉ cần "dùng như app trên điện thoại" → dùng [`web-nextjs-
 | Chạy thử   | App **Expo Go** trên điện thoại | Quét mã QR là chạy, không cần Android Studio / Xcode |
 | Build & phát hành | **EAS Build + EAS Submit** | Build trên máy chủ Expo (iOS không cần Mac), tự giữ khoá ký app, đẩy lên store |
 | Cập nhật nhanh | EAS Update | Sửa phần JavaScript → gửi tới người dùng không cần store duyệt lại |
-| Kiểm thử   | Jest (`jest-expo`) + Firebase Emulator | `npm run check` |
+| Kiểm thử   | Vitest + Firebase Emulator | `npm run check` |
 
 ## Sơ đồ
 ```mermaid
@@ -50,4 +50,4 @@ Nhẹ — gần như giống web:
 - Riêng: [`rules.md`](rules.md)
 
 ## Khung dự án
-Code khung: `templates/projects/mobile-expo-firebase/` — **chưa làm**.
+Code khung: [`templates/projects/mobile-expo-firebase/`](../../../templates/projects/mobile-expo-firebase/). Skill `tao-khung-du-an` copy khung này để tạo dự án mới.

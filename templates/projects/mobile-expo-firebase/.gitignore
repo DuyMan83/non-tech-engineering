@@ -1,0 +1,33 @@
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+
+# Thư mục native do Expo tự sinh khi build — KHÔNG commit, KHÔNG sửa tay
+/ios
+/android
+.kotlin/
+
+# Khoá ký app / chứng chỉ — KHÔNG BAO GIỜ commit (EAS giữ giúp)
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+*.orig.*
+
+# Cấu hình môi trường nằm trong config/*.env và ĐƯỢC commit (không chứa bí mật).
+# Không dùng file .env* — nếu lỡ tạo thì không commit.
+.env*
+
+# Firebase / debug
+*-debug.log
+npm-debug.*
+*.tsbuildinfo
+.DS_Store

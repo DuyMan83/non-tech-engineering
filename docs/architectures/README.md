@@ -6,7 +6,7 @@ Skill đọc thư mục này để biết dựng dự án theo kiến trúc nào
 Mỗi kiến trúc gồm:
 - `README.md` — dùng khi nào, thành phần, chi phí, khi nào không nên dùng.
 - `rules.md` — rules riêng, bổ sung cho [`_chung/clean-rules.md`](_chung/clean-rules.md).
-- `khung-du-an/` — **khung dự án** dựng sẵn, chạy được ngay (4 lớp, `npm run check`, 1 tính năng mẫu có test). Skill `tao-khung-du-an` tạo dự án mới bằng cách copy khung này. Khi nói với người dùng: "Mình dựng **khung dự án** trước, rồi xây thêm theo ý bạn".
+- Code khung ở `templates/projects/<ten-kien-truc>/` (không nằm trong `docs/`) — **khung dự án** dựng sẵn, chạy được ngay (4 lớp, `npm run check`, 1 tính năng mẫu có test). Skill `tao-khung-du-an` tạo dự án mới bằng cách copy khung này. Khi nói với người dùng: "Mình dựng **khung dự án** trước, rồi xây thêm theo ý bạn".
 
 | Kiến trúc | Dùng khi |
 |---|---|

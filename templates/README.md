@@ -5,6 +5,7 @@ File mẫu được cài vào máy người dùng hoặc vào từng dự án.
 | Thư mục | Cài vào | Nội dung |
 |---------|---------|----------|
 | `user/` | `~/.claude/` (bằng `scripts/install-skills.sh claude`) | `AGENTS.md`: quy tắc chung khi làm việc với người non-tech, áp dụng cho mọi dự án |
+| `projects/<ten-kien-truc>/` | Thư mục dự án mới (bằng skill `tao-khung-du-an`) | Khung dự án chạy được ngay theo kiến trúc trong `docs/architectures/<ten-kien-truc>/` |
 
 ## Claude Code đọc AGENTS.md thế nào?
 

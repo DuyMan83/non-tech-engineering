@@ -50,4 +50,4 @@ Nhẹ — gần như giống web:
 - Riêng: [`rules.md`](rules.md)
 
 ## Khung dự án
-[`khung-du-an/`](khung-du-an/) — **chưa làm**.
+Code khung: `templates/projects/mobile-expo-firebase/` — **chưa làm**.

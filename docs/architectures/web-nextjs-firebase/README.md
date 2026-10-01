@@ -38,4 +38,4 @@ flowchart LR
 - Riêng: [`rules.md`](rules.md)
 
 ## Khung dự án
-[`khung-du-an/`](khung-du-an/) — **chưa làm**.
+Code khung: [`templates/projects/web-nextjs-firebase/`](../../../templates/projects/web-nextjs-firebase/). Skill `tao-khung-du-an` copy khung này để tạo dự án mới.

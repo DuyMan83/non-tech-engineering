@@ -24,4 +24,4 @@ Chi phí ước tính, giới hạn của gói miễn phí.
 - Riêng: `rules.md`
 
 ## Khung dự án
-`khung-du-an/` — bộ khung code chạy được ngay, dự án mới copy từ đây.
+Code khung nằm ở `templates/projects/<ten-kien-truc>/` — chạy được ngay; skill `tao-khung-du-an` copy từ đây.

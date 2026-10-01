@@ -16,8 +16,9 @@
 ├── firestore.rules
 ├── firestore.indexes.json
 ├── firebase.json         # Hosting trỏ tới out/
-├── .env.example          # NEXT_PUBLIC_FIREBASE_* (mẫu, không có giá trị thật)
-├── .env.local            # Giá trị thật — KHÔNG commit
+├── .env.development      # Chạy trên máy: Emulator + dự án demo (commit được, không có bí mật)
+├── .env.production.example  # Mẫu cấu hình thật
+├── .env.production.local # Cấu hình Firebase thật cho build/deploy — KHÔNG commit
 ├── AGENTS.md / CLAUDE.md
 └── package.json          # scripts: dev, build, check, deploy
 ```
@@ -34,7 +35,8 @@
 
 ## W3. Firebase
 - Khởi tạo SDK **một lần** trong `src/data/firebase.ts`, đọc cấu hình từ `process.env.NEXT_PUBLIC_FIREBASE_*`.
-- `.env.local` không commit; `.env.example` liệt kê đủ biến (giá trị rỗng).
+- `npm run dev` dùng `.env.development` (Emulator, dự án `demo-...`) — **không bao giờ đụng dữ liệu thật**.
+- `npm run build` / `deploy` dùng `.env.production.local` (không commit), tạo từ `.env.production.example`.
 - Phát triển và test dùng **Firebase Emulator** (Auth + Firestore), không đụng dữ liệu thật. Emulator cần **Java 21+** (skill `thiet-lap-moi-truong` cài).
 
 ## W4. Ranh giới bằng ESLint

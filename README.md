@@ -15,7 +15,8 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 │       └── operational/  # Hướng dẫn vận hành
 ├── scripts/          # Script tiện ích: cài skills, tạo skill mới, ...
 ├── templates/
-│   └── user/AGENTS.md  # Quy tắc chung với người non-tech, cài vào ~/.claude cho mọi dự án
+│   ├── user/AGENTS.md  # Quy tắc chung với người non-tech, cài vào ~/.claude cho mọi dự án
+│   └── projects/       # Khung dự án theo từng kiến trúc (skill tao-khung-du-an copy ra)
 ├── skills/           # Nguồn chính của các skill
 │   ├── claude/       # Skill cho Claude Code (mỗi skill là 1 thư mục có SKILL.md)
 │   └── codex/        # Skill cho Codex (sẽ bổ sung sau)

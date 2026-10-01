@@ -1,0 +1,153 @@
+# Danh sách công cụ và tài khoản cho skill thiet-lap-moi-truong.
+# Thêm công cụ mới = thêm 1 mục. Thứ tự trong file = thứ tự thực hiện.
+#
+# Trường:
+#   id            mã nội bộ
+#   ten           tên hiển thị cho người dùng (lời thường)
+#   vi_sao        1 câu giải thích vì sao cần, bằng lời thường
+#   goi           các gói cần mục này: co-ban | web | day-du
+#   ai_lam        ai | nguoi-dan-lenh (người tự dán vào Terminal) | nguoi (thao tác trên web)
+#   kiem_tra      lệnh kiểm tra; thành công = exit code 0 (trừ khi có kiem_tra_chuoi)
+#   kiem_tra_chuoi  chuỗi phải xuất hiện trong output để coi là OK
+#   phien_ban_toi_thieu  (tuỳ chọn) so với output của lệnh kiem_tra
+#   cai.macos / cai.windows  lệnh cài theo hệ điều hành
+#   huong_dan     file hướng dẫn cho người dùng, tương đối với docs/guides/operational/
+#   phu_thuoc     các id phải xong trước
+#
+# cap_nhat: ngày soạn lần cuối. da_thu_may_that: đã chạy thử trên máy thật chưa.
+# CHÚ Ý: các lệnh dưới đây CHƯA được thử trên máy thật — cần kiểm chứng trước khi phát hành.
+
+cap_nhat: 2026-10-01
+da_thu_may_that: false
+
+cong_cu:
+  - id: homebrew
+    ten: Homebrew (trình cài phần mềm cho Mac)
+    vi_sao: Giúp cài các công cụ khác chỉ bằng một lệnh, không cần mật khẩu mỗi lần.
+    goi: [co-ban, web, day-du]
+    chi_he_dieu_hanh: macos
+    ai_lam: nguoi-dan-lenh   # cần mật khẩu máy, AI không gõ thay được
+    kiem_tra: brew --version
+    cai:
+      macos: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    sau_khi_cai: >
+      Trên chip Apple Silicon, trình cài in ra 2 lệnh "Next steps" để thêm brew vào PATH.
+      AI chạy giúp: echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"
+      (báo cho người dùng trước khi sửa ~/.zprofile).
+    huong_dan: mo-terminal.md
+
+  - id: git
+    ten: Git (công cụ lưu điểm cho code)
+    vi_sao: Để lưu lại từng bước làm và quay lại được khi hỏng.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: git --version
+    cai:
+      macos: brew install git
+      windows: winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [homebrew]
+
+  - id: node
+    ten: Node.js (bộ máy chạy app web)
+    vi_sao: Cần để chạy app web và công cụ Firebase.
+    goi: [web, day-du]
+    ai_lam: ai
+    kiem_tra: node --version
+    phien_ban_toi_thieu: "20"
+    cai:
+      macos: brew install node
+      windows: winget install --id OpenJS.NodeJS.LTS -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [homebrew]
+
+  - id: vscode
+    ten: Visual Studio Code (nơi làm việc với code)
+    vi_sao: Để xem code, chạy app và trò chuyện với Claude ngay cạnh code.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: code --version
+    cai:
+      macos: brew install --cask visual-studio-code
+      windows: winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [homebrew]
+    huong_dan: vscode-va-claude-extension.md
+
+  - id: claude-extension
+    ten: Claude trong VS Code
+    vi_sao: Để trò chuyện với Claude ngay trong VS Code.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: code --list-extensions
+    kiem_tra_chuoi: anthropic.claude-code
+    cai:
+      macos: code --install-extension anthropic.claude-code
+      windows: code --install-extension anthropic.claude-code
+    sau_khi_cai: Người dùng phải tự đăng nhập tài khoản Claude trong extension (Phần 3 của hướng dẫn).
+    phu_thuoc: [vscode]
+    huong_dan: vscode-va-claude-extension.md
+
+  - id: firebase-cli
+    ten: Công cụ Firebase
+    vi_sao: Để đưa app lên mạng bằng Firebase.
+    goi: [web, day-du]
+    ai_lam: ai
+    kiem_tra: firebase --version
+    cai:
+      macos: npm install -g firebase-tools
+      windows: npm install -g firebase-tools
+    phu_thuoc: [node]
+
+tai_khoan:
+  - id: github-account
+    ten: Tài khoản GitHub
+    vi_sao: Nơi sao lưu code trên mạng.
+    goi: [co-ban, web, day-du]
+    ai_lam: nguoi
+    huong_dan: tao-tai-khoan-github.md
+    thu_thap: [github_username, github_email]   # hỏi lần lượt, mỗi lần 1 câu
+
+  - id: git-identity
+    ten: Tên và email cho Git
+    vi_sao: Để mỗi điểm lưu ghi rõ ai làm.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: git config --global user.email
+    cai:
+      tat_ca: git config --global user.name "<ten>" && git config --global user.email "<github_email>"
+    phu_thuoc: [git, github-account]
+
+  - id: ssh-key
+    ten: Chìa khoá kết nối GitHub (SSH key)
+    vi_sao: Để máy lưu code lên GitHub mà không phải gõ mật khẩu.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai          # AI tạo key + copy; người dán vào GitHub
+    kiem_tra: ssh -T -o StrictHostKeyChecking=accept-new -o BatchMode=yes git@github.com
+    kiem_tra_chuoi: successfully authenticated   # lệnh này trả exit code 1 kể cả khi thành công
+    cai:
+      tat_ca: ssh-keygen -t ed25519 -C "<github_email>" -f ~/.ssh/id_ed25519 -N ""
+    sao_chep_khoa_cong_khai:
+      macos: pbcopy < ~/.ssh/id_ed25519.pub
+      windows: Get-Content $HOME\.ssh\id_ed25519.pub | Set-Clipboard
+    ghi_chu: >
+      KHÔNG ghi đè nếu ~/.ssh/id_ed25519 đã tồn tại — dùng lại key cũ.
+      Key không có passphrase để người non-tech không bị hỏi mật khẩu; chấp nhận được trên máy cá nhân, báo rủi ro cho người dùng.
+    phu_thuoc: [git, github-account]
+    huong_dan: ssh-key-github.md
+
+  - id: firebase-account
+    ten: Tài khoản Firebase (Google)
+    vi_sao: Để có nơi đưa app lên mạng.
+    goi: [web, day-du]
+    ai_lam: nguoi
+    huong_dan: firebase.md   # Phần 1
+
+  - id: firebase-login
+    ten: Đăng nhập Firebase trên máy
+    vi_sao: Để máy được phép đưa app lên Firebase của bạn.
+    goi: [web, day-du]
+    ai_lam: nguoi-dan-lenh   # lệnh tương tác, mở trình duyệt
+    kiem_tra: firebase login:list
+    kiem_tra_chuoi: "@"
+    cai:
+      tat_ca: firebase login
+    phu_thuoc: [firebase-cli, firebase-account]
+    huong_dan: firebase.md   # Phần 2

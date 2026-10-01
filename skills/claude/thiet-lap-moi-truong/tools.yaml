@@ -85,6 +85,17 @@ cong_cu:
     phu_thuoc: [vscode]
     huong_dan: vscode-va-claude-extension.md
 
+  - id: gh
+    ten: GitHub CLI (công cụ kết nối máy với GitHub)
+    vi_sao: Để máy đăng nhập GitHub một lần qua trình duyệt, sau đó lưu code lên GitHub không cần gõ mật khẩu.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: gh --version
+    cai:
+      macos: brew install gh
+      windows: winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [homebrew]
+
   - id: firebase-cli
     ten: Công cụ Firebase
     vi_sao: Để đưa app lên mạng bằng Firebase.
@@ -115,23 +126,20 @@ tai_khoan:
       tat_ca: git config --global user.name "<ten>" && git config --global user.email "<github_email>"
     phu_thuoc: [git, github-account]
 
-  - id: ssh-key
-    ten: Chìa khoá kết nối GitHub (SSH key)
-    vi_sao: Để máy lưu code lên GitHub mà không phải gõ mật khẩu.
+  - id: github-login
+    ten: Đăng nhập GitHub trên máy
+    vi_sao: Để máy được phép lưu code lên GitHub của bạn (kết nối HTTPS).
     goi: [co-ban, web, day-du]
-    ai_lam: ai          # AI tạo key + copy; người dán vào GitHub
-    kiem_tra: ssh -T -o StrictHostKeyChecking=accept-new -o BatchMode=yes git@github.com
-    kiem_tra_chuoi: successfully authenticated   # lệnh này trả exit code 1 kể cả khi thành công
+    ai_lam: nguoi-dan-lenh   # lệnh tương tác: hiện mã 1 lần, mở trình duyệt
+    kiem_tra: gh auth status --hostname github.com
     cai:
-      tat_ca: ssh-keygen -t ed25519 -C "<github_email>" -f ~/.ssh/id_ed25519 -N ""
-    sao_chep_khoa_cong_khai:
-      macos: pbcopy < ~/.ssh/id_ed25519.pub
-      windows: Get-Content $HOME\.ssh\id_ed25519.pub | Set-Clipboard
-    ghi_chu: >
-      KHÔNG ghi đè nếu ~/.ssh/id_ed25519 đã tồn tại — dùng lại key cũ.
-      Key không có passphrase để người non-tech không bị hỏi mật khẩu; chấp nhận được trên máy cá nhân, báo rủi ro cho người dùng.
-    phu_thuoc: [git, github-account]
-    huong_dan: ssh-key-github.md
+      tat_ca: gh auth login --hostname github.com --git-protocol https --web
+    sau_khi_cai: >
+      AI chạy `gh auth setup-git` để Git dùng đăng nhập của gh khi lưu code lên GitHub.
+      Lấy username bằng `gh api user --jq .login`, so với github_username đã thu thập.
+    ghi_chu: Thông tin đăng nhập do gh cất trong kho bảo mật của hệ điều hành; AI không bao giờ đọc hay in token (`gh auth token` bị cấm).
+    phu_thuoc: [gh, github-account]
+    huong_dan: dang-nhap-github.md
 
   - id: firebase-account
     ten: Tài khoản Firebase (Google)

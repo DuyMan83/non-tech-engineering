@@ -1,6 +1,6 @@
 ---
 name: thiet-lap-moi-truong
-description: Thiết lập máy tính để người không biết code bắt đầu vibe coding - cài Git, Node.js, VS Code, Claude extension, công cụ Firebase; hướng dẫn tạo tài khoản GitHub, SSH key, Firebase. Dùng khi người dùng mới bắt đầu, nói "cài đặt máy", "chuẩn bị môi trường", "máy tôi đã sẵn sàng chưa", hoặc khi một skill khác báo thiếu công cụ / gặp lỗi lạ về môi trường. Chạy lại nhiều lần an toàn.
+description: Thiết lập máy tính để người không biết code bắt đầu vibe coding - cài Git, Node.js, VS Code, Claude extension, công cụ Firebase; GitHub CLI; hướng dẫn tạo tài khoản GitHub, đăng nhập GitHub (HTTPS), Firebase. Dùng khi người dùng mới bắt đầu, nói "cài đặt máy", "chuẩn bị môi trường", "máy tôi đã sẵn sàng chưa", hoặc khi một skill khác báo thiếu công cụ / gặp lỗi lạ về môi trường. Chạy lại nhiều lần an toàn.
 ---
 
 # Thiết lập môi trường
@@ -43,7 +43,7 @@ Kết quả kiểm tra máy của bạn:
 
 ✅ Đã sẵn sàng:      Git, VS Code
 🤖 Claude sẽ cài:    Node.js, công cụ Firebase
-🙋 Cần bạn làm:      Tạo tài khoản GitHub, dán chìa khoá vào GitHub
+🙋 Cần bạn làm:      Tạo tài khoản GitHub, đăng nhập GitHub trên máy
 ⚠️ Cần chú ý:        (xung đột, ví dụ Node quá cũ)
 ```
 Mỗi mục kèm `vi_sao` ngắn. Chế độ `kiem-tra` → dừng ở đây.
@@ -58,7 +58,7 @@ Liệt kê kế hoạch theo thứ tự trong `tools.yaml` (tôn trọng `phu_th
 - **`ai_lam: nguoi`** → đọc file `huong_dan`, đưa **từng bước một** (không dán cả file), chờ "xong". Thu thập `thu_thap` mỗi lần 1 câu.
 
 Ghi chú riêng:
-- **ssh-key**: nếu `~/.ssh/id_ed25519` đã có → dùng lại, không tạo mới. Tạo xong → copy khoá công khai vào clipboard → hướng dẫn `ssh-key-github.md` → `kiem_tra`. Nói rõ cho người dùng: khoá không đặt mật khẩu cho dễ dùng; đừng gửi file khoá cho ai.
+- **github-login**: kết nối GitHub bằng **HTTPS qua GitHub CLI**, không dùng SSH key. Người dùng dán lệnh → làm theo `dang-nhap-github.md` (mã 1 lần + trình duyệt) → AI chạy `sau_khi_cai` → `kiem_tra`. Nếu username không khớp tài khoản đã tạo → báo, hỏi có muốn đăng nhập lại không.
 - **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code, rồi gõ "làm tiếp".
 - **homebrew (Apple Silicon)**: chạy phần `sau_khi_cai`, báo trước sẽ thêm 1 dòng vào `~/.zprofile`.
 - **claude-extension**: cài xong, hướng dẫn Phần 3 của `vscode-va-claude-extension.md` để đăng nhập.
@@ -68,7 +68,7 @@ Sau mỗi mục: cập nhật file trạng thái.
 ### Bước 5 — Chạy thử
 Trong thư mục tạm:
 1. `git init`, tạo 1 file, `git commit` → lưu điểm được.
-2. `ssh -T git@github.com` có chuỗi `successfully authenticated` → kết nối GitHub được.
+2. `gh auth status` thành công và `git config --global --get-regexp 'credential.*github.com.*helper'` có `gh` → Git lưu code lên GitHub được.
 3. Gói `web`: `node -e "console.log('ok')"` và `firebase login:list` có email.
 4. Xoá thư mục tạm.
 
@@ -92,7 +92,7 @@ Hoặc nếu còn thiếu: "Còn thiếu X. Bước tiếp theo: Y."
   "muc": {
     "git": "ok",
     "github-account": "ok",
-    "ssh-key": "dang-lam"
+    "github-login": "dang-lam"
   },
   "github_username": "...",
   "github_email": "..."
@@ -101,10 +101,10 @@ Hoặc nếu còn thiếu: "Còn thiếu X. Bước tiếp theo: Y."
 Giá trị: `ok` | `dang-lam` | `loi` | `chua`. Chỉ lưu thông tin công khai — **không lưu mật khẩu, token, khoá**.
 
 ## Ràng buộc an toàn (bắt buộc)
-- **Không bao giờ** yêu cầu, nhận hoặc in ra mật khẩu, token, mã 2 bước, hay nội dung khoá riêng (`id_ed25519` không có `.pub`). Người dùng lỡ dán vào chat → bảo họ đổi ngay.
+- **Không bao giờ** yêu cầu, nhận hoặc in ra mật khẩu, token, mã 2 bước, mã 1 lần của GitHub. Không chạy `gh auth token` hay bất kỳ lệnh nào in token. Người dùng lỡ dán vào chat → bảo họ đổi ngay.
 - Chỉ dùng lệnh trong `tools.yaml` (nguồn chính thức). Không `curl | bash` từ nguồn khác.
 - Không `sudo`. Lệnh cần mật khẩu → chuyển sang `nguoi-dan-lenh`.
-- Không gỡ, hạ cấp, hay ghi đè công cụ/khoá đã có. Xung đột (Node quá cũ, có nvm, key cũ) → báo và hỏi.
+- Không gỡ, hạ cấp, hay ghi đè công cụ/khoá đã có. Xung đột (Node quá cũ, có nvm, đã đăng nhập GitHub bằng tài khoản khác) → báo và hỏi.
 - Không sửa file cấu hình shell khi chưa nói rõ sẽ thêm dòng nào.
 - Không tạo tài khoản, không nhập thẻ thanh toán, không nâng cấp gói Firebase Blaze.
 - Lỗi → dừng và giải thích. Không thử liên tiếp các cách khác.

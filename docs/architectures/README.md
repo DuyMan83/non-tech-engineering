@@ -3,6 +3,11 @@
 Mỗi kiến trúc là một thư mục `docs/architectures/<ten-kien-truc>/`, bắt đầu từ bản sao của [`_template`](_template/).
 Skill đọc thư mục này để biết dựng dự án theo kiến trúc nào.
 
+Mỗi kiến trúc gồm:
+- `README.md` — dùng khi nào, thành phần, chi phí, khi nào không nên dùng.
+- `rules.md` — rules riêng, bổ sung cho [`_chung/clean-rules.md`](_chung/clean-rules.md).
+- `khung-du-an/` — **khung dự án** dựng sẵn, chạy được ngay (4 lớp, `npm run check`, 1 tính năng mẫu có test). Dự án mới được tạo bằng cách copy khung này. Khi nói với người dùng: "Mình dựng **khung dự án** trước, rồi xây thêm theo ý bạn".
+
 | Kiến trúc | Dùng khi |
 |---|---|
 | [`_chung/clean-rules.md`](_chung/clean-rules.md) | Rules chung cho mọi kiến trúc: 4 lớp, ranh giới, `npm run check`, bảo mật, sổ tay dự án |

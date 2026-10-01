@@ -36,3 +36,6 @@ flowchart LR
 ## Rules
 - Chung: [`../_chung/clean-rules.md`](../_chung/clean-rules.md)
 - Riêng: [`rules.md`](rules.md)
+
+## Khung dự án
+[`khung-du-an/`](khung-du-an/) — **chưa làm**.

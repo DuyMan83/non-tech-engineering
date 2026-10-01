@@ -42,10 +42,13 @@ cong_cu:
     goi: [co-ban, web, day-du]
     ai_lam: ai
     kiem_tra: git --version
+    ghi_chu: >
+      Git thường ĐÃ CÓ vì người dùng cài ở bước khởi đầu (docs/guides/operational/getting-started.md) —
+      cần git để tải bộ skill về. Lệnh cài dưới đây chỉ là dự phòng.
+      macOS: git đến từ Command Line Tools của Apple là đủ, không cần cài lại bằng brew.
     cai:
-      macos: brew install git
+      macos: xcode-select --install   # mở hộp thoại, người dùng bấm Install
       windows: winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
-    phu_thuoc: [homebrew]
 
   - id: node
     ten: Node.js (bộ máy chạy app web)
@@ -65,6 +68,12 @@ cong_cu:
     goi: [co-ban, web, day-du]
     ai_lam: ai
     kiem_tra: code --version
+    kiem_tra_du_phong:
+      macos: test -d "/Applications/Visual Studio Code.app"
+    ghi_chu: >
+      macOS: nếu VS Code được cài tay (kéo vào Applications) thì không có lệnh `code`.
+      Khi đó dùng đường dẫn đầy đủ "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+      cho mọi lệnh `code` ở các bước sau, không cài lại VS Code.
     cai:
       macos: brew install --cask visual-studio-code
       windows: winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements

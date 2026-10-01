@@ -33,7 +33,7 @@ Skill này thường chạy **trước khi** có AGENTS.md / CLAUDE.md, nên t�
 - Đọc file trạng thái `~/.non-tech/moi-truong.json` nếu có, để biết lần trước dở ở đâu.
 
 ### Bước 1 — Kiểm tra (chỉ đọc)
-Với mỗi mục trong gói: chạy `kiem_tra`, so `kiem_tra_chuoi` / `phien_ban_toi_thieu`. Mục `ai_lam: nguoi` không kiểm tra được bằng lệnh → dựa vào file trạng thái, chưa có thì coi là "chưa xong".
+Với mỗi mục trong gói: chạy `kiem_tra`, so `kiem_tra_chuoi` / `phien_ban_toi_thieu`; nếu thất bại mà có `kiem_tra_du_phong` cho hệ điều hành này thì thử tiếp. Đọc `ghi_chu` của từng mục. Mục `ai_lam: nguoi` không kiểm tra được bằng lệnh → dựa vào file trạng thái, chưa có thì coi là "chưa xong".
 
 ### Bước 2 — Báo cáo
 Dùng đúng mẫu:

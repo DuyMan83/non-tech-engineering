@@ -2,6 +2,10 @@
 
 Hướng dẫn vận hành: cài đặt môi trường, deploy, theo dõi, backup, xử lý sự cố.
 
+## Bắt đầu từ đây
+
+👉 [getting-started.md](getting-started.md) — Cài Claude, Git và bộ skill (người dùng tự làm, trước mọi thứ khác).
+
 ## Thiết lập ban đầu (dùng bởi skill `thiet-lap-moi-truong`)
 
 | Hướng dẫn | Nội dung |

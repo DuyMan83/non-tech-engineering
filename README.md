@@ -24,12 +24,14 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 
 ## Bắt đầu nhanh
 
-1. Clone repo về máy.
-2. Cài skills cho Claude Code (link vào `~/.claude/skills`):
-   ```bash
-   ./scripts/install-skills.sh claude
-   ```
-3. Mở Claude Code và gõ `/` để thấy các skill vừa cài.
+**Người dùng non-tech:** làm theo [docs/guides/operational/getting-started.md](docs/guides/operational/getting-started.md) (cài Claude → cài Git → cài bộ skill → "Thiết lập môi trường cho tôi").
+
+**Người phát triển:**
+```bash
+git clone https://github.com/DuyMan83/non-tech-engineering.git
+cd non-tech-engineering && ./scripts/install-skills.sh claude
+```
+Trên Windows, chạy trong **Git Bash**. Lưu ý: Git Bash mặc định *copy* thay vì tạo symlink, nên sửa skill trong repo xong phải chạy lại script.
 
 ## Tạo skill mới
 

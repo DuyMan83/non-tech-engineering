@@ -25,5 +25,6 @@ description: Làm gì + KHI NÀO dùng. Đây là phần AI đọc để quyết
 2. **Mô tả bằng ngôn ngữ đời thường** — người dùng sẽ gọi skill bằng câu nói tự nhiên.
 3. **Chia bước rõ ràng**, có điểm dừng để người dùng xác nhận trước khi AI làm việc khó hoàn tác.
 4. **Mọi yêu cầu người dùng làm gì đều kèm 1 câu ngắn "để làm gì"** (bấm nút, dán lệnh, nhập mật khẩu, tạo tài khoản...). Người non-tech làm theo tự tin hơn khi hiểu lý do, và dừng lại đúng lúc khi thấy điều gì không khớp.
-5. **Giải thích kết quả** bằng ngôn ngữ dễ hiểu, không chỉ in log kỹ thuật.
-6. **An toàn trước**: không xoá dữ liệu, không push, không deploy khi chưa hỏi.
+5. **Trình bày yêu cầu theo mẫu chung**: **tiêu đề in đậm** → chữ thường giải thích ngắn → lệnh (khối code riêng, có nút copy, 1 lệnh/khối) hoặc các bước (danh sách đánh số). Xem ví dụ trong `skills/claude/thiet-lap-moi-truong/SKILL.md`.
+6. **Giải thích kết quả** bằng ngôn ngữ dễ hiểu, không chỉ in log kỹ thuật.
+7. **An toàn trước**: không xoá dữ liệu, không push, không deploy khi chưa hỏi.

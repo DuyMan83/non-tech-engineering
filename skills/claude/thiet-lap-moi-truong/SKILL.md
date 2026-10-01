@@ -12,10 +12,47 @@ Người dùng kết thúc với một máy **đã chạy thử được**: lưu
 Skill này thường chạy **trước khi** có AGENTS.md / CLAUDE.md, nên tự tuân theo các quy tắc sau:
 - Người dùng **không biết code, không đọc được log**. Nói tiếng Việt, lời thường, không thuật ngữ; nếu buộc phải dùng thì giải thích trong ngoặc.
 - **Mỗi lần chỉ hỏi 1 câu**, kèm gợi ý câu trả lời.
-- **Mọi yêu cầu người dùng làm gì đều kèm 1 câu ngắn "để làm gì"** — bấm nút, dán lệnh, nhập mật khẩu, tạo tài khoản, trả lời câu hỏi. Mẫu: `**Bấm Install** — để cài Node.js, bộ máy chạy app web.` Không giải thích kỹ thuật, chỉ nói lợi ích/lý do bằng lời thường.
+- **Mọi yêu cầu người dùng làm gì đều kèm 1 câu ngắn "để làm gì"** — bấm nút, dán lệnh, nhập mật khẩu, tạo tài khoản, trả lời câu hỏi. Trình bày theo **Mẫu trình bày** bên dưới. Không giải thích kỹ thuật, chỉ nói lợi ích/lý do bằng lời thường.
 - **Báo tiến độ**: "Bước 2/6 — ...".
 - Không in log thô. Lỗi → tóm tắt bằng 1–2 câu + bước tiếp theo.
 - Kết thúc mỗi lượt: **đã làm gì · bạn sẽ thấy gì · bước tiếp theo**.
+
+### Mẫu trình bày mỗi yêu cầu người dùng làm
+
+Mỗi khi cần người dùng làm gì, trình bày đúng 3 phần:
+
+1. **Dòng in đậm** — tiêu đề yêu cầu, ngắn, bắt đầu bằng động từ.
+2. **Chữ thường** — 1–2 câu: việc này để làm gì, sẽ thấy gì, (nếu có) vì sao Claude không tự làm được.
+3. **Lệnh hoặc các bước**:
+   - **Lệnh** → để trong khối code riêng (giao diện Claude tự có nút copy). Mỗi khối **chỉ 1 lệnh**, không có `$`, không chú thích bên trong, để người dùng copy là chạy được ngay.
+   - **Các bước** → danh sách đánh số `1. 2. 3.`, mỗi bước 1 hành động; tên nút/ô in đậm, kèm "để làm gì" ngắn nếu chưa hiển nhiên.
+
+Ví dụ — lệnh:
+
+~~~markdown
+**Đăng nhập GitHub trên máy**
+
+Để máy được phép lưu code lên GitHub của bạn. Claude không tự chạy được vì lệnh cần bạn xác nhận trên trình duyệt.
+
+Mở Terminal, dán lệnh này rồi nhấn Enter:
+
+```
+gh auth login --hostname github.com --git-protocol https --web
+```
+~~~
+
+Ví dụ — các bước:
+
+~~~markdown
+**Cài Node.js**
+
+Node.js là bộ máy chạy app web. Cửa sổ cài đặt sắp hiện ra.
+
+1. Bấm **Continue** ở các màn hình giới thiệu.
+2. Bấm **Agree** — để đồng ý điều khoản sử dụng.
+3. Bấm **Install**, nhập **mật khẩu Mac** — để cho phép cài vào máy.
+4. Thấy "The installation was successful" thì bấm **Close**, rồi gõ **xong** ở đây.
+~~~
 
 ## Tài nguyên
 - `tools.yaml` (cùng thư mục) — danh sách công cụ, tài khoản, lệnh kiểm tra/cài, thứ tự, phụ thuộc. **Là nguồn sự thật**; không tự nghĩ ra lệnh cài khác.

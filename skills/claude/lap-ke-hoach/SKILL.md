@@ -67,6 +67,7 @@ Ngắn gọn, theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/cl
 3. Duyệt → ghi Nguồn từng mục, lưu điểm "Kế hoạch: <tên>", cập nhật `AGENTS.md` của dự án.
 
 ### Bước 8 — Trong lúc làm
+Làm bằng skill **`lam-theo-ke-hoach`**. Tóm tắt:
 - Làm từng chặng. Hết chặng: `npm run check` xanh, AI tự đi hết "Bạn tự thử", rồi **dừng** cho người dùng thử.
 - Ghi vào **Ghi chép trong lúc làm** theo ngày: đã làm gì, số test trước/sau, lỗi tìm ra và cách sửa, việc còn treo, lệch kế hoạch ở đâu.
 - Tìm ra lỗi khi thử → **viết test tái hiện lỗi trước**, rồi mới sửa.

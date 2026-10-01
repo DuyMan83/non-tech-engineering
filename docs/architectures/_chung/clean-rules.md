@@ -80,7 +80,7 @@ app → ui → services → domain
 
 ## Thêm một tính năng — thứ tự làm
 
-0. **Đề xuất đã được duyệt** (skill `de-xuat-tinh-nang`, `docs/de-xuat/`) và **kế hoạch đã được duyệt** (skill `lap-ke-hoach`, `docs/ke-hoach/`). Phần "Cách kiểm chứng" của đề xuất là định nghĩa "xong"; kế hoạch nói làm theo chặng nào, test gì.
+0. **Đề xuất đã được duyệt** (skill `de-xuat-tinh-nang`, `docs/de-xuat/`) và **kế hoạch đã được duyệt** (skill `lap-ke-hoach`, `docs/ke-hoach/`). Phần "Cách kiểm chứng" của đề xuất là định nghĩa "xong"; kế hoạch nói làm theo chặng nào, test gì. Làm bằng skill `lam-theo-ke-hoach` (nhánh riêng, test trước, dừng cho người dùng thử hết mỗi chặng).
 1. `domain/`: thêm/sửa kiểu dữ liệu và quy tắc + test.
 2. `services/`: thêm file use case (+ interface repository nếu cần) + test với repository giả.
 3. `data/`: implement repository bằng Firebase + cập nhật `firestore.rules` + test luật.

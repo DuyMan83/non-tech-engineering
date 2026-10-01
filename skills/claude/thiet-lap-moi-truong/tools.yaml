@@ -139,9 +139,9 @@ cong_cu:
         (trường assets[].browser_download_url), tải vào ~/Downloads rồi `open` file đó.
         Người dùng bấm Continue → Install, nhập mật khẩu Mac trong cửa sổ → Close.
       windows: winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [winget]
 
 tai_khoan:
-    phu_thuoc: [winget]
 
   - id: github-account
     ten: Tài khoản GitHub

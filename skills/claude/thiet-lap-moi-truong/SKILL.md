@@ -100,6 +100,7 @@ Liệt kê kế hoạch theo thứ tự trong `tools.yaml` (tôn trọng `phu_th
 
 Ghi chú riêng:
 - **github-login**: kết nối GitHub bằng **HTTPS qua GitHub CLI**, không dùng SSH key. Người dùng dán lệnh → làm theo `dang-nhap-github.md` (mã 1 lần + trình duyệt) → AI chạy `sau_khi_cai` → `kiem_tra`. Nếu username không khớp tài khoản đã tạo → báo, hỏi có muốn đăng nhập lại không.
+- **winget (Windows)**: kiểm tra đầu tiên. Thiếu → mở trang App Installer trên Microsoft Store (theo `cai-app-installer.md`), chờ người dùng cài xong và mở lại Claude. Store bị chặn → dừng, soạn tin nhắn mẫu gửi IT.
 - **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code — để máy nhận ra phần mềm vừa cài — rồi gõ "làm tiếp".
 - **Không cài Homebrew.** Trên Mac chỉ dùng file cài có giao diện như trong `tools.yaml`.
 - **Firebase**: không cài vào máy; mọi lệnh Firebase chạy qua `npx -y firebase-tools@latest ...`.

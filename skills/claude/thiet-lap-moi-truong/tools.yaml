@@ -40,6 +40,22 @@ cong_cu:
       macos: xcode-select --install   # mở hộp thoại, người dùng bấm Install
       windows: winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
 
+  - id: winget
+    ten: Trình cài phần mềm của Windows (App Installer / winget)
+    vi_sao: Để Claude cài Node.js, Java, VS Code... giúp bạn chỉ bằng một lệnh.
+    goi: [co-ban, web, day-du]
+    chi_he_dieu_hanh: windows
+    ai_lam: ai-mo-trinh-cai   # AI mở trang Microsoft Store, người bấm Get/Update
+    kiem_tra: winget --version
+    cai:
+      windows: explorer.exe "ms-windows-store://pdp/?productid=9NBLGGH4NNS1"
+    ghi_chu: >
+      Windows 11 và Windows 10 bản mới thường đã có sẵn. Thiếu thì mở trang "App Installer" trên Microsoft Store
+      (dự phòng: https://apps.microsoft.com/detail/9nblggh4nns1), người dùng bấm Get hoặc Update.
+      Đã cài mà vẫn báo không có lệnh winget → bảo người dùng tắt hẳn và mở lại Claude.
+      Máy công ty chặn Microsoft Store → không tự xử lý; soạn tin nhắn mẫu để người dùng nhờ bộ phận IT.
+    huong_dan: cai-app-installer.md
+
   - id: node
     ten: Node.js (bộ máy chạy app web)
     vi_sao: Cần để chạy app web và công cụ Firebase.
@@ -53,6 +69,7 @@ cong_cu:
         tải https://nodejs.org/dist/<version>/node-<version>.pkg vào ~/Downloads rồi `open` file đó.
         Người dùng bấm Continue → Agree → Install, nhập mật khẩu Mac trong cửa sổ → Close.
       windows: winget install --id OpenJS.NodeJS.LTS -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [winget]
 
   - id: java
     ten: Java (cần cho bộ giả lập Firebase)
@@ -69,6 +86,7 @@ cong_cu:
         Người dùng bấm Continue → Install, nhập mật khẩu Mac trong cửa sổ → Close.
       windows: winget install --id EclipseAdoptium.Temurin.21.JDK -e --accept-source-agreements --accept-package-agreements
     ghi_chu: Máy đã có Java cũ hơn 21 → báo và hỏi, không gỡ bản cũ.
+    phu_thuoc: [winget]
 
   - id: vscode
     ten: Visual Studio Code (nơi làm việc với code)
@@ -90,6 +108,7 @@ cong_cu:
         (Nếu không chuyển được vào /Applications vì thiếu quyền → mở Finder cho người dùng tự kéo vào.)
       windows: winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
     huong_dan: vscode-va-claude-extension.md
+    phu_thuoc: [winget]
 
   - id: claude-extension
     ten: Claude trong VS Code
@@ -122,6 +141,8 @@ cong_cu:
       windows: winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements
 
 tai_khoan:
+    phu_thuoc: [winget]
+
   - id: github-account
     ten: Tài khoản GitHub
     vi_sao: Nơi sao lưu code trên mạng.

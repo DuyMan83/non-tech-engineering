@@ -44,6 +44,13 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 |---|---|---|
 | {{NGAY_TAO}} | Tạo từ khung dự án `web-nextjs-firebase` | — |
 
+## Đề xuất (`docs/de-xuat/`)
+Tính năng mới → viết đề xuất trước (skill `de-xuat-tinh-nang`), người dùng duyệt rồi mới code. "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
+
+| Ngày | Đề xuất | Trạng thái |
+|---|---|---|
+| — | — | — |
+
 ## Đang dở / bước tiếp theo
 - Khung dự án vừa tạo, chưa có tính năng riêng.
 

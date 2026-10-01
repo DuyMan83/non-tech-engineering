@@ -77,6 +77,7 @@ app → ui → services → domain
 
 ## Thêm một tính năng — thứ tự làm
 
+0. **Đề xuất đã được duyệt** (skill `de-xuat-tinh-nang`, lưu ở `docs/de-xuat/`). Phần "Cách kiểm chứng" của đề xuất là định nghĩa "xong".
 1. `domain/`: thêm/sửa kiểu dữ liệu và quy tắc + test.
 2. `services/`: thêm file use case (+ interface repository nếu cần) + test với repository giả.
 3. `data/`: implement repository bằng Firebase + cập nhật `firestore.rules` + test luật.

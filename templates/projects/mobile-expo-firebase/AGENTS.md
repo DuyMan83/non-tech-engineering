@@ -27,7 +27,7 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 | `npm start production` | Chạy trên điện thoại với **dữ liệu thật** — cần xác nhận |
 | `npm run build` | Đóng gói thử trên máy (miễn phí) — chắc chắn app build được |
 | `npm run build production [android\|ios\|all]` | Build app thật trên EAS — **tốn lượt build**, cần xác nhận |
-| `npm run check` | Kiểm tra toàn bộ: kiểu dữ liệu → ranh giới lớp → test → luật bảo mật. **Phải pass trước khi lưu điểm.** |
+| `npm run check` | Kiểm tra toàn bộ: kiểu dữ liệu → ranh giới lớp → unit test → test trên bộ giả lập (luật bảo mật + tích hợp). **Phải pass trước khi lưu điểm.** |
 | `npm run deploy` | Gửi bản cập nhật (EAS Update) tới **người dùng thật** + ghi đè luật Firestore — cần xác nhận |
 | `npm run deploy production store` | Build app mới + gửi lên App Store / Google Play — cần xác nhận |
 
@@ -51,10 +51,10 @@ Muốn xem trước các lệnh sẽ chạy mà không chạy thật: thêm `-- 
 |---|---|---|
 | {{NGAY_TAO}} | Tạo từ khung dự án `mobile-expo-firebase` | — |
 
-## Đề xuất (`docs/de-xuat/`)
-Tính năng mới → viết đề xuất trước (skill `de-xuat-tinh-nang`), người dùng duyệt rồi mới code. "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
+## Đề xuất (`docs/de-xuat/`) và kế hoạch (`docs/ke-hoach/`)
+Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập kế hoạch (skill `lap-ke-hoach`), người dùng duyệt cả hai rồi mới code. Test theo rủi ro, ưu tiên test tích hợp (`tests/*.integration.test.ts`). "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
 
-| Ngày | Đề xuất | Trạng thái |
+| Ngày | Đề xuất / kế hoạch | Trạng thái |
 |---|---|---|
 | — | — | — |
 

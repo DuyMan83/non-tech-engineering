@@ -52,8 +52,11 @@ app → ui → services → domain
 
 ## C. Kiểm tra (để AI tự xác nhận)
 
-15. `domain/` và `services/` **bắt buộc có test**. Test `services/` dùng repository giả (in-memory), **không cần Firebase thật**.
-16. Có **đúng 1 lệnh**: `npm run check`, chạy lần lượt: kiểm tra kiểu (`tsc --noEmit`) → ESLint (ranh giới) → test → test luật bảo mật Firestore (Emulator).
+15. Test **dựa trên rủi ro**, ưu tiên theo thứ tự: rủi ro cao → **tích hợp** → luật bảo mật → unit cho trường hợp rủi ro. Không viết test cho code hiển nhiên.
+    - **Tích hợp** (`tests/*.integration.test.ts`): việc của app (`services/`) chạy qua `data/` thật trên Emulator, có bật luật bảo mật. **Mọi tính năng có đọc/ghi dữ liệu phải có.**
+    - **Unit** (`src/**/*.test.ts`): `domain/` và `services/` với repository giả (in-memory), cho trường hợp biên / lỗi / quyền.
+    - Mọi dòng nghiệm thu của đề xuất phải có test tự động phủ, trừ thứ chỉ kiểm được bằng mắt.
+16. Có **đúng 1 lệnh**: `npm run check`, chạy lần lượt: kiểm tra kiểu (`tsc --noEmit`) → ESLint (ranh giới) → unit test → test trên Emulator (luật bảo mật + tích hợp).
 17. **Chạy `npm run check` và thấy pass trước khi** báo "xong" hoặc lưu điểm. Fail → sửa, không lưu điểm hỏng.
 18. **Không được làm yếu kiểm tra** để cho pass: không tắt rule ESLint, không xoá/skip test, không nới `tsconfig`. Cần thay đổi → hỏi người dùng, giải thích lý do.
 
@@ -77,7 +80,7 @@ app → ui → services → domain
 
 ## Thêm một tính năng — thứ tự làm
 
-0. **Đề xuất đã được duyệt** (skill `de-xuat-tinh-nang`, lưu ở `docs/de-xuat/`). Phần "Cách kiểm chứng" của đề xuất là định nghĩa "xong".
+0. **Đề xuất đã được duyệt** (skill `de-xuat-tinh-nang`, `docs/de-xuat/`) và **kế hoạch đã được duyệt** (skill `lap-ke-hoach`, `docs/ke-hoach/`). Phần "Cách kiểm chứng" của đề xuất là định nghĩa "xong"; kế hoạch nói làm theo chặng nào, test gì.
 1. `domain/`: thêm/sửa kiểu dữ liệu và quy tắc + test.
 2. `services/`: thêm file use case (+ interface repository nếu cần) + test với repository giả.
 3. `data/`: implement repository bằng Firebase + cập nhật `firestore.rules` + test luật.

@@ -1,4 +1,4 @@
-// Test luật bảo mật Firestore. Chạy bằng `npm run test:rules` (tự bật Firebase Emulator).
+// Test luật bảo mật Firestore. Chạy bằng `npm run test:emulator` (tự bật Firebase Emulator).
 import { readFileSync } from "node:fs";
 import {
   assertFails,

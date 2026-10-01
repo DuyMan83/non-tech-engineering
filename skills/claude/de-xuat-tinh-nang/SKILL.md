@@ -64,8 +64,7 @@ Ghi vào **Phụ lục**: ai chốt mục nào (`người quyết` / `agent đ�
 3. Người dùng duyệt → lưu điểm (commit) "Đề xuất: <tên>"; cập nhật mục "Đang dở / bước tiếp theo" trong `AGENTS.md` của dự án.
 
 ### Bước 6 — Khi bắt đầu làm (sau khi duyệt)
-- Làm theo thứ tự trong `docs/kien-truc/clean-rules.md` ("Thêm một tính năng").
-- Viết các test ở "Kiểm tra tự động" **trước hoặc cùng lúc** với code.
+- Lập kế hoạch bằng skill **`lap-ke-hoach`** (chia chặng, rủi ro, chiến lược kiểm thử) trước khi code.
 - "Xong" = `npm run check` pass **và** người dùng đã thử hết checklist "Người dùng tự thử".
 - Trong lúc làm phát hiện phải đổi quyết định → **dừng, hỏi**, sửa đề xuất (ghi "Sửa ngày YYYY-MM-DD: ..." ngay chỗ đổi), rồi mới làm tiếp.
 

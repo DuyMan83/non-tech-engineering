@@ -22,7 +22,7 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 | `npm start` | Chạy **dev** trên máy — mở http://localhost:3000 |
 | `npm start production` | Chạy trên máy với **dữ liệu thật** — cần xác nhận |
 | `npm run build` / `npm run build production` | Build bản dev (mặc định) / production → thư mục `out/` |
-| `npm run check` | Kiểm tra toàn bộ: kiểu dữ liệu → ranh giới lớp → test → luật bảo mật. **Phải pass trước khi lưu điểm.** |
+| `npm run check` | Kiểm tra toàn bộ: kiểu dữ liệu → ranh giới lớp → unit test → test trên bộ giả lập (luật bảo mật + tích hợp). **Phải pass trước khi lưu điểm.** |
 | `npm run deploy` | Đưa bản **production** lên mạng, **ghi đè** bản đang chạy — cần xác nhận |
 
 **Xác nhận:** `npm start production` và `npm run deploy` tự dừng và in cảnh báo nếu chưa xác nhận. AI phải **trình bày cảnh báo cho người dùng, chờ họ đồng ý**, rồi mới chạy lại với `-- --xac-nhan`. Không bao giờ tự thêm `--xac-nhan` khi người dùng chưa đồng ý.
@@ -44,10 +44,10 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 |---|---|---|
 | {{NGAY_TAO}} | Tạo từ khung dự án `web-nextjs-firebase` | — |
 
-## Đề xuất (`docs/de-xuat/`)
-Tính năng mới → viết đề xuất trước (skill `de-xuat-tinh-nang`), người dùng duyệt rồi mới code. "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
+## Đề xuất (`docs/de-xuat/`) và kế hoạch (`docs/ke-hoach/`)
+Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập kế hoạch (skill `lap-ke-hoach`), người dùng duyệt cả hai rồi mới code. Test theo rủi ro, ưu tiên test tích hợp (`tests/*.integration.test.ts`). "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
 
-| Ngày | Đề xuất | Trạng thái |
+| Ngày | Đề xuất / kế hoạch | Trạng thái |
 |---|---|---|
 | — | — | — |
 

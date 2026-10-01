@@ -1,9 +1,11 @@
 // npm run deploy                  -> đưa bản production lên mạng (phải xác nhận)
 // npm run deploy -- --xac-nhan    -> đã xác nhận (AI chỉ dùng SAU KHI người dùng đồng ý)
-import { confirmDanger, fail, loadConfig, parseArgs, run } from "./lib.mjs";
+// npm run deploy -- --thu         -> chỉ xem trước cảnh báo và các lệnh sẽ chạy
+import { confirmDanger, fail, loadConfig, makeRunner, parseArgs } from "./lib.mjs";
 
-const { envName, confirmed } = parseArgs("production");
+const { envName, confirmed, dryRun } = parseArgs("production");
 const config = loadConfig(envName);
+const run = makeRunner(dryRun);
 
 if (config.usesEmulators) {
   fail(`Môi trường "${envName}" chỉ dùng bộ giả lập trên máy — không đưa lên mạng được.`);
@@ -17,10 +19,10 @@ await confirmDanger(
     "Người dùng thật sẽ thấy thay đổi ngay.",
   ],
   config.projectId,
-  confirmed,
+  { confirmed, dryRun },
 );
 
 run("npm run check");
 run("next build", config.vars);
 run(`firebase deploy --only hosting,firestore --project ${config.projectId}`);
-console.log(`\n✔ Đã đưa lên mạng: https://${config.projectId}.web.app`);
+console.log(dryRun ? "\n(Chỉ xem trước — chưa chạy lệnh nào.)" : `\n✔ Đã đưa lên mạng: https://${config.projectId}.web.app`);

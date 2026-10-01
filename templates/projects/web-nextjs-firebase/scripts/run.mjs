@@ -1,9 +1,10 @@
 // npm start              -> chạy dev trên máy với bộ giả lập (dữ liệu thử)
 // npm start production   -> build production rồi chạy trên máy, dùng DỮ LIỆU THẬT (phải xác nhận)
-import { confirmDanger, loadConfig, parseArgs, run } from "./lib.mjs";
+import { confirmDanger, loadConfig, makeRunner, parseArgs } from "./lib.mjs";
 
-const { envName, confirmed } = parseArgs("dev");
+const { envName, confirmed, dryRun } = parseArgs("dev");
 const config = loadConfig(envName);
+const run = makeRunner(dryRun);
 
 if (config.usesEmulators) {
   console.log(`Chạy môi trường ${envName} với bộ giả lập — mở http://localhost:3000`);
@@ -15,7 +16,7 @@ if (config.usesEmulators) {
       "Mọi thứ thêm / sửa / xoá khi thử sẽ ghi thẳng vào dữ liệu thật.",
     ],
     config.projectId,
-    confirmed,
+    { confirmed, dryRun },
   );
   run("next build", config.vars);
   console.log(`Chạy bản ${envName} — mở http://localhost:5002`);

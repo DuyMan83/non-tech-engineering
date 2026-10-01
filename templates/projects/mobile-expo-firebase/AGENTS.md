@@ -58,5 +58,8 @@ Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập 
 |---|---|---|
 | — | — | — |
 
+## Phiên bản (`docs/phien-ban.md`)
+Đưa lên cho người dùng thật / lùi về bản trước → skill `trien-khai-phien-ban-moi`. Phiên bản đang chạy: **chưa triển khai**.
+
 ## Đang dở / bước tiếp theo
 - Khung dự án vừa tạo, chưa có tính năng riêng.

@@ -62,6 +62,8 @@ Cấu hình `no-restricted-imports` theo thư mục (ví dụ):
 
 **Xác nhận việc nguy hiểm** (`start <thật>`, `deploy`): script tự in cảnh báo và dừng nếu chưa có `--xac-nhan`.
 AI **trình bày cảnh báo cho người dùng theo mẫu trình bày, chờ họ đồng ý**, rồi mới chạy lại với `-- --xac-nhan` (vd `npm run deploy -- --xac-nhan`). Người dùng tự gõ lệnh trong Terminal → script hỏi họ gõ lại mã dự án.
+**Xem trước**: thêm `-- --thu` để in cảnh báo + các lệnh sẽ chạy mà không chạy thật.
+Triển khai / lùi bản: theo skill `trien-khai-phien-ban-moi` (chỉ từ `main`, có phiếu triển khai, ghi `docs/phien-ban.md`).
 
 ## W6. PWA (cài lên màn hình chính)
 - Có `manifest.webmanifest` + icon. Không thêm service worker phức tạp khi chưa cần offline.

@@ -45,6 +45,7 @@ Mình đã tải file cài và mở lên; bạn chỉ cần bấm qua cửa sổ
 ## Cách làm việc
 
 - **Làm từng phần nhỏ.** Yêu cầu lớn → đề xuất chia nhỏ, làm phần đầu tiên trước.
+- **Đưa phiên bản mới lên cho người dùng thật / lùi về bản trước → skill `trien-khai-phien-ban-moi`** (luôn trình bày phiếu triển khai và chờ người dùng đồng ý).
 - **Tính năng mới hoặc thay đổi cách app hoạt động → viết đề xuất trước** (skill `de-xuat-tinh-nang`) và lập kế hoạch (skill `lap-ke-hoach`), người dùng duyệt rồi mới code — bằng skill `thuc-thi-ke-hoach`. Sửa lỗi nhỏ rõ ràng thì không cần.
 - **Cho xem kết quả thật**: chạy app, mở trình duyệt, chụp màn hình. Không yêu cầu họ đọc code để kiểm tra.
 - **Lưu điểm sau mỗi bước họ ưng** (commit), mô tả điểm lưu bằng lời thường, để họ quay lại được khi hỏng.

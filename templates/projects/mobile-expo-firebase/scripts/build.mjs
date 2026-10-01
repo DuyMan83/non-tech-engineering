@@ -9,7 +9,7 @@ const localConfig = loadConfig(envName);
 if (localConfig.usesEmulators) {
   const config = localConfig;
   run("expo export --platform android --platform ios --output-dir dist", config.appEnv);
-  console.log("\n✔ Đóng gói thử xong — app build được. (Đây chỉ là kiểm tra, chưa phải file cài lên điện thoại.)");
+  console.log(dryRun ? "\n(Chỉ xem trước — chưa chạy lệnh nào.)" : "\n✔ Đóng gói thử xong — app build được. (Đây chỉ là kiểm tra, chưa phải file cài lên điện thoại.)");
 } else {
   const platform = mode ?? "all";
   if (!["android", "ios", "all"].includes(platform)) fail(`Nền tảng "${platform}" không hợp lệ — dùng android, ios hoặc all.`);
@@ -24,5 +24,5 @@ if (localConfig.usesEmulators) {
     { confirmed, dryRun },
   );
   run(`${EAS} build --profile ${envName} --platform ${platform}${nonInteractive()}`, config.appEnv);
-  console.log("\n✔ Đã gửi build lên EAS. Xem tiến độ và tải file cài tại https://expo.dev");
+  console.log(dryRun ? "\n(Chỉ xem trước — chưa chạy lệnh nào.)" : "\n✔ Đã gửi build lên EAS. Xem tiến độ và tải file cài tại https://expo.dev");
 }

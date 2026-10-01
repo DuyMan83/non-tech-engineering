@@ -34,8 +34,8 @@ run("npm run check");
 run(`firebase deploy --only firestore --project ${config.projectId}`);
 if (mode === "update") {
   run(`${EAS} update --channel ${envName} --auto${nonInteractive()}`, config.appEnv);
-  console.log("\n✔ Đã gửi bản cập nhật. Người dùng nhận ở lần mở app tiếp theo.");
+  console.log(dryRun ? "\n(Chỉ xem trước — chưa chạy lệnh nào.)" : "\n✔ Đã gửi bản cập nhật. Người dùng nhận ở lần mở app tiếp theo.");
 } else {
   run(`${EAS} build --profile ${envName} --platform all --auto-submit${nonInteractive()}`, config.appEnv);
-  console.log("\n✔ Đã gửi build + nộp lên store. Theo dõi tại https://expo.dev và trên App Store Connect / Google Play Console.");
+  console.log(dryRun ? "\n(Chỉ xem trước — chưa chạy lệnh nào.)" : "\n✔ Đã gửi build + nộp lên store. Theo dõi tại https://expo.dev và trên App Store Connect / Google Play Console.");
 }

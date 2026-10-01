@@ -16,12 +16,12 @@ export function fail(message) {
   process.exit(1);
 }
 
-// Tham số: môi trường (vd "production") + cờ xác nhận ("--xac-nhan" hoặc "xac-nhan").
+// Tham số: môi trường (vd "production") + cờ "--xac-nhan" (hoặc "xac-nhan") và "--thu" (chỉ in lệnh, không chạy).
 export function parseArgs(defaultEnv) {
   const args = process.argv.slice(2);
-  const confirmed = args.some((a) => a === "--xac-nhan" || a === "xac-nhan");
-  const envName = args.find((a) => !a.startsWith("-") && a !== "xac-nhan") ?? defaultEnv;
-  return { envName, confirmed };
+  const flags = new Set(args.filter((a) => a.startsWith("-") || a === "xac-nhan" || a === "thu").map((a) => a.replace(/^-+/, "")));
+  const envName = args.find((a) => !a.startsWith("-") && a !== "xac-nhan" && a !== "thu") ?? defaultEnv;
+  return { envName, confirmed: flags.has("xac-nhan"), dryRun: flags.has("thu") };
 }
 
 function parseEnvFile(text) {
@@ -55,20 +55,24 @@ export function loadConfig(envName) {
   return { envName, file, vars, projectId, usesEmulators };
 }
 
-// Chạy lệnh, in output ra màn hình. Lỗi -> dừng luôn.
-export function run(command, extraEnv = {}) {
-  console.log(`\n→ ${command}`);
-  const result = spawnSync(command, { shell: true, stdio: "inherit", env: { ...process.env, ...extraEnv } });
-  if (result.status !== 0) fail(`Lệnh thất bại: ${command}`);
+// Chạy lệnh, in output ra màn hình. Lỗi -> dừng luôn. dryRun: chỉ in lệnh.
+export function makeRunner(dryRun) {
+  return function run(command, extraEnv = {}) {
+    console.log(`\n→ ${command}`);
+    if (dryRun) return;
+    const result = spawnSync(command, { shell: true, stdio: "inherit", env: { ...process.env, ...extraEnv } });
+    if (result.status !== 0) fail(`Lệnh thất bại: ${command}`);
+  };
 }
 
 // Việc nguy hiểm (dữ liệu thật, ghi đè bản trên mạng) phải được xác nhận.
 // - Có cờ --xac-nhan: coi như người dùng đã đồng ý (AI chỉ thêm cờ SAU KHI đã hỏi người dùng).
 // - Người dùng tự gõ lệnh trong Terminal: hỏi họ gõ lại mã dự án.
 // - Không có cả hai: in cảnh báo và dừng.
-export async function confirmDanger(warningLines, projectId, confirmed) {
+// - --thu: chỉ in cảnh báo + lệnh, không hỏi.
+export async function confirmDanger(warningLines, projectId, { confirmed, dryRun }) {
   console.log(`\n⚠️  CẢNH BÁO\n${warningLines.map((l) => `   ${l}`).join("\n")}\n`);
-  if (confirmed) return;
+  if (confirmed || dryRun) return;
   if (!process.stdin.isTTY) {
     fail("Chưa được xác nhận. Hỏi người dùng trước, nếu họ đồng ý thì chạy lại lệnh và thêm: -- --xac-nhan");
   }

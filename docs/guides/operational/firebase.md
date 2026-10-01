@@ -44,6 +44,26 @@ Quay lại Claude, gõ **"xong"**.
 3. Google Analytics: có thể **tắt** — *đây là công cụ thống kê lượt truy cập, chưa cần lúc đầu*.
 4. Đợi tạo xong → **Continue**.
 
+## Phần 4 — Chuẩn bị đưa app lên mạng lần đầu (làm 1 lần cho mỗi dự án)
+
+*Để app có nơi lưu dữ liệu thật và cho người dùng thật đăng nhập.* Claude làm phần lớn bằng lệnh; bạn chỉ làm những bước dưới đây khi Claude nhờ.
+
+**Chọn nơi đặt dữ liệu** — Claude sẽ hỏi bạn trước. *Chọn một lần, sau này không đổi được.* Người dùng ở Việt Nam → chọn **Singapore (asia-southeast1)** để app nhanh.
+
+**Bật đăng nhập** — *để người dùng của app đăng nhập được.*
+1. Vào https://console.firebase.google.com → chọn dự án của bạn.
+2. Menu trái **Build → Authentication** → **Get started**.
+3. Tab **Sign-in method** → chọn **Anonymous** → bật **Enable** → **Save**.
+
+## Phần 5 — Lùi về bản trước (khi bản mới có vấn đề)
+
+*Để app trên mạng quay lại bản trước ngay, không cần chờ sửa.* Thường Claude làm giúp; bạn cũng tự làm được:
+1. Vào https://console.firebase.google.com → chọn dự án → **Build → Hosting**.
+2. Kéo xuống **Release history** — mỗi dòng là một lần đưa lên.
+3. Ở dòng của bản trước, bấm **⋮** → **Rollback** → xác nhận.
+
+Lưu ý: cách này chỉ đưa **trang web** về bản trước. **Dữ liệu** và **luật bảo mật** giữ nguyên — nếu bản mới có đổi luật, báo Claude để lùi cả luật.
+
 ## Lưu ý an toàn
 
 - Nếu Firebase hỏi **thêm thẻ / nâng cấp Blaze** mà bạn không chủ động yêu cầu → **dừng lại và hỏi Claude trước**.

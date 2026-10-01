@@ -15,6 +15,7 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại ở đây.
 - `install-skills.sh` hỗ trợ Windows (chế độ copy, chạy lại an toàn) và không ghi đè skill / `AGENTS.md` của người dùng.
 - `thiet-lap-moi-truong` cài thêm Java 21 cho Firebase Emulator; trên Windows kiểm tra winget trước, thiếu thì hướng dẫn cài App Installer từ Microsoft Store.
 - Hướng dẫn thiết lập trong `docs/guides/operational/`, gồm `getting-started.md` (cài Claude → Git → tài khoản GitHub + lời mời → tải ZIP → cài bộ skill; repo đang private).
+- Skill `tao-khung-du-an`: hỏi tên/mô tả app → `tao-du-an.mjs` copy khung + điền thông tin → `npm install` → `npm run check` → lưu điểm đầu tiên → (hỏi) tạo repo GitHub riêng tư → chạy thử cho người dùng xem. Đã chạy thử trọn quy trình trên cloud.
 - Khung dự án web `templates/projects/web-nextjs-firebase/`: Next.js 16 xuất tĩnh + Firebase 12, 4 lớp có ESLint chặn import sai lớp, tính năng mẫu "việc cần làm" (đăng nhập ẩn danh), `npm run check` (tsc → ESLint → Vitest → test luật Firestore trên Emulator). Đã chạy thử trên cloud: check pass, build xuất tĩnh được, thử trên trình duyệt pass.
 - Kiến trúc: rules chung clean architecture 4 lớp (`docs/architectures/_chung/clean-rules.md`), `web-nextjs-firebase` (xuất tĩnh, gói miễn phí), `mobile-expo-firebase` (Expo + EAS Build/Submit/Update).
 - `docs/architectures/` chứa kiến trúc mẫu, kèm `_template`.

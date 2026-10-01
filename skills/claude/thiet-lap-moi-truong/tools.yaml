@@ -90,6 +90,9 @@ cong_cu:
     cai:
       macos: code --install-extension anthropic.claude-code
       windows: code --install-extension anthropic.claude-code
+    du_phong:   # VS Code cài tay trên Mac, không có lệnh `code`
+      kiem_tra_macos: '"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" --list-extensions'
+      cai_macos: '"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" --install-extension anthropic.claude-code'
     sau_khi_cai: Người dùng phải tự đăng nhập tài khoản Claude trong extension (Phần 3 của hướng dẫn).
     phu_thuoc: [vscode]
     huong_dan: vscode-va-claude-extension.md

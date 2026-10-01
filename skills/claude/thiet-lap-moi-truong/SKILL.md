@@ -61,6 +61,7 @@ Ghi chú riêng:
 - **github-login**: kết nối GitHub bằng **HTTPS qua GitHub CLI**, không dùng SSH key. Người dùng dán lệnh → làm theo `dang-nhap-github.md` (mã 1 lần + trình duyệt) → AI chạy `sau_khi_cai` → `kiem_tra`. Nếu username không khớp tài khoản đã tạo → báo, hỏi có muốn đăng nhập lại không.
 - **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code, rồi gõ "làm tiếp".
 - **homebrew (Apple Silicon)**: chạy phần `sau_khi_cai`, báo trước sẽ thêm 1 dòng vào `~/.zprofile`.
+- **vscode trên Mac cài tay** (có `/Applications/Visual Studio Code.app` nhưng không có lệnh `code`): coi VS Code là **đã có**, không cài lại; dùng lệnh `du_phong` của `claude-extension`. Không tự thêm `code` vào PATH.
 - **claude-extension**: cài xong, hướng dẫn Phần 3 của `vscode-va-claude-extension.md` để đăng nhập.
 
 Sau mỗi mục: cập nhật file trạng thái.

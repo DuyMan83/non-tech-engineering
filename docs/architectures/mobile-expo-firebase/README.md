@@ -36,7 +36,7 @@ flowchart LR
 
 ## Môi trường
 Nhẹ — gần như giống web:
-- Node.js (đã có từ gói `web`).
+- Node.js và Java 21+ cho Firebase Emulator (đã có từ gói `web`).
 - App **Expo Go** trên điện thoại (tải từ App Store / Google Play).
 - Tài khoản **Expo** (expo.dev) — để build và phát hành.
 - Skill `thiet-lap-moi-truong` cần thêm gói `mobile` (**chưa làm**): Expo Go, tài khoản Expo, `eas login`.

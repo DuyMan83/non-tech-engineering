@@ -35,7 +35,7 @@
 ## W3. Firebase
 - Khởi tạo SDK **một lần** trong `src/data/firebase.ts`, đọc cấu hình từ `process.env.NEXT_PUBLIC_FIREBASE_*`.
 - `.env.local` không commit; `.env.example` liệt kê đủ biến (giá trị rỗng).
-- Phát triển và test dùng **Firebase Emulator** (Auth + Firestore), không đụng dữ liệu thật.
+- Phát triển và test dùng **Firebase Emulator** (Auth + Firestore), không đụng dữ liệu thật. Emulator cần **Java 21+** (skill `thiet-lap-moi-truong` cài).
 
 ## W4. Ranh giới bằng ESLint
 Cấu hình `no-restricted-imports` theo thư mục (ví dụ):

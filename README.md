@@ -33,7 +33,7 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 git clone https://github.com/DuyMan83/non-tech-engineering.git
 cd non-tech-engineering && ./scripts/install-skills.sh claude
 ```
-Trên Windows, chạy trong **Git Bash**. Lưu ý: Git Bash mặc định *copy* thay vì tạo symlink, nên sửa skill trong repo xong phải chạy lại script.
+Trên Windows, chạy trong **Git Bash**. Script tự chuyển sang chế độ *copy* (Git Bash không tạo symlink thật), nên sửa skill trong repo xong phải chạy lại script. Script chỉ ghi đè những gì nó đã cài, không đụng skill hay `AGENTS.md` riêng của người dùng.
 
 ## Tạo skill mới
 

@@ -54,6 +54,22 @@ cong_cu:
         Người dùng bấm Continue → Agree → Install, nhập mật khẩu Mac trong cửa sổ → Close.
       windows: winget install --id OpenJS.NodeJS.LTS -e --accept-source-agreements --accept-package-agreements
 
+  - id: java
+    ten: Java (cần cho bộ giả lập Firebase)
+    vi_sao: Để chạy thử dữ liệu và luật bảo mật trên máy bằng bộ giả lập Firebase, không đụng dữ liệu thật.
+    goi: [web, day-du]
+    ai_lam: {macos: ai-mo-trinh-cai, windows: ai}
+    kiem_tra: java -version   # in ra stderr
+    phien_ban_toi_thieu: "21"
+    cai:
+      macos: >
+        Tải bản Temurin JDK 21 (.pkg) đúng chip:
+        https://api.adoptium.net/v3/installer/latest/21/ga/mac/aarch64/jdk/hotspot/normal/eclipse (Apple Silicon)
+        hoặc .../mac/x64/... (Intel) vào ~/Downloads rồi `open` file đó.
+        Người dùng bấm Continue → Install, nhập mật khẩu Mac trong cửa sổ → Close.
+      windows: winget install --id EclipseAdoptium.Temurin.21.JDK -e --accept-source-agreements --accept-package-agreements
+    ghi_chu: Máy đã có Java cũ hơn 21 → báo và hỏi, không gỡ bản cũ.
+
   - id: vscode
     ten: Visual Studio Code (nơi làm việc với code)
     vi_sao: Để xem code, chạy app và trò chuyện với Claude ngay cạnh code.

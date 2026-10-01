@@ -1,5 +1,5 @@
 ---
-name: lam-theo-ke-hoach
+name: thuc-thi-ke-hoach
 description: Làm (code) một kế hoạch đã được duyệt, từng chặng một - viết test trước, code cho xanh, lưu điểm từng bước, tự kiểm và tự chạy app hết mỗi chặng, rồi dừng cho người dùng tự thử; làm trên nhánh riêng, nghiệm thu xong mới gộp vào bản chính. Dùng sau skill lap-ke-hoach, khi người dùng nói "làm đi", "bắt đầu làm", "làm tiếp", "làm chặng tiếp theo". KHÔNG dùng khi chưa có kế hoạch được duyệt.
 ---
 
@@ -76,7 +76,7 @@ Khi mọi chặng xong và **mọi dòng NT đã được người dùng xác nh
 2. Tóm tắt cho người dùng: làm được gì, số ca test trước → sau, rủi ro còn treo (nếu có).
 3. Gộp: `git switch main && git merge --no-ff de-xuat/<ten>` → `npm run check` xanh trên `main` → `git push origin main` (theo đồng ý đẩy lên GitHub ở Bước 3).
 4. Đề xuất: trạng thái **"Đã xong <ngày>"**; `AGENTS.md` của dự án: cập nhật bảng đề xuất / kế hoạch và "Đang dở / bước tiếp theo".
-5. Hỏi người dùng có muốn đưa lên mạng không. **Skill này không deploy.**
+5. Hỏi người dùng có muốn đưa phiên bản mới lên mạng không → skill **`trien-khai-phien-ban-moi`** (chưa có). **Skill này không deploy.**
 
 ## Ràng buộc
 

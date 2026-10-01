@@ -8,8 +8,8 @@ Bộ **skills** và **agents** giúp người không chuyên kỹ thuật (non-t
 .
 ├── .claude/          # Cấu hình Claude Code cho chính repo này (settings, skills được link vào)
 ├── agents/           # Định nghĩa subagent (vai trò chuyên biệt: reviewer, planner, ...)
-├── architectures/    # Kiến trúc mẫu, mỗi kiến trúc 1 thư mục: architectures/<ten-kien-truc>/
 ├── docs/
+│   ├── architectures/    # Kiến trúc mẫu, mỗi kiến trúc 1 thư mục: <ten-kien-truc>/
 │   └── guides/
 │       ├── engineering/  # Hướng dẫn kỹ thuật
 │       └── operational/  # Hướng dẫn vận hành

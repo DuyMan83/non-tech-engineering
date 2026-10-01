@@ -1,6 +1,6 @@
 # Rules chung: clean architecture đơn giản
 
-Áp dụng cho **mọi kiến trúc** trong `docs/architectures/` (web và mobile).
+Áp dụng cho **mọi kiến trúc** trong `docs/architectures/` (web Next.js và mobile Expo).
 Mỗi kiến trúc có `rules.md` riêng, chỉ ghi phần khác biệt và trỏ về file này.
 
 **Viết cho AI đọc.** Người dùng non-tech không cần hiểu file này; AI phải giữ đúng các rules và chỉ báo kết quả bằng lời thường.
@@ -47,7 +47,7 @@ app → ui → services → domain
 10. File quá ~200 dòng → tách.
 11. **TypeScript strict.** Không dùng `any`, không `// @ts-ignore` khi chưa hỏi người dùng.
 12. **Không thêm thư viện** khi chưa hỏi người dùng (nói bằng lời thường: thêm để làm gì, có tốn tiền không) và ghi lý do vào `AGENTS.md` của dự án.
-13. **Không nâng cấp phiên bản framework** (Next.js, React Native, React, Firebase SDK) khi chưa hỏi.
+13. **Không nâng cấp phiên bản framework** (Next.js, Expo SDK, React Native, React, Firebase SDK) khi chưa hỏi.
 
 ## C. Kiểm tra (để AI tự xác nhận)
 

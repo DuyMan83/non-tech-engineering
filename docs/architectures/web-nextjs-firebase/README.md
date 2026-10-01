@@ -30,7 +30,7 @@ flowchart LR
 
 ## Khi nào KHÔNG nên dùng
 - Cần giữ **bí mật trên máy chủ**: thanh toán, gọi API có key trả phí, gửi email tự động → cần Firebase App Hosting hoặc Cloud Functions (**gói Blaze, cần thẻ**). Chuyển lên khi thật cần; `domain/` và `services/` giữ nguyên, chủ yếu đổi `data/` và cấu hình deploy.
-- Cần **lên App Store / Google Play** hoặc dùng sâu tính năng máy → dùng [`mobile-react-native-firebase`](../mobile-react-native-firebase/).
+- Cần **lên App Store / Google Play** hoặc dùng sâu tính năng máy → dùng [`mobile-expo-firebase`](../mobile-expo-firebase/).
 - Chỉ là 1 trang giới thiệu tĩnh, không dữ liệu → kiến trúc này thừa.
 
 ## Rules

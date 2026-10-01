@@ -33,6 +33,20 @@ if [ "$TOOL" = "claude" ]; then
     ln -sfn "$f" "$DEST/agents/$(basename "$f")"
     echo "  ✓ agent: $(basename "$f" .md)"
   done
+
+  # AGENTS.md tầng người dùng: link vào ~/.claude và import từ CLAUDE.md
+  AGENTS_SRC="$ROOT/templates/user/AGENTS.md"
+  if [ -e "$DEST/AGENTS.md" ] && [ ! -L "$DEST/AGENTS.md" ]; then
+    echo "  ! $DEST/AGENTS.md đã có sẵn và không phải do bộ skill tạo — giữ nguyên, bỏ qua."
+  else
+    ln -sfn "$AGENTS_SRC" "$DEST/AGENTS.md"
+    touch "$DEST/CLAUDE.md"
+    if ! grep -qxF "@AGENTS.md" "$DEST/CLAUDE.md"; then
+      [ -s "$DEST/CLAUDE.md" ] && printf '\n' >> "$DEST/CLAUDE.md"
+      printf '@AGENTS.md\n' >> "$DEST/CLAUDE.md"
+    fi
+    echo "  ✓ AGENTS.md (đã import trong CLAUDE.md)"
+  fi
 fi
 
 echo "Đã cài $count skill vào $DEST/skills"

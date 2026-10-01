@@ -19,6 +19,12 @@ description: Làm gì + KHI NÀO dùng. Đây là phần AI đọc để quyết
 ---
 ```
 
+## Quy tắc chung nằm ở AGENTS.md
+
+Giọng nói, mẫu trình bày yêu cầu, việc phải hỏi trước, việc không bao giờ làm... đã có trong `templates/user/AGENTS.md` (cài cho mọi dự án). Skill **không cần lặp lại**, chỉ ghi phần riêng của mình — trừ hai trường hợp:
+- Ràng buộc an toàn liên quan trực tiếp tới skill → **viết lặp lại** trong skill (lặp an toàn không sao, thiếu mới nguy).
+- Skill có thể chạy **trước khi** AGENTS.md được cài (như `thiet-lap-moi-truong`) → tự mang đủ quy tắc.
+
 ## Nguyên tắc cho người non-tech
 
 1. **Một skill = một việc.** Tránh skill "làm mọi thứ".

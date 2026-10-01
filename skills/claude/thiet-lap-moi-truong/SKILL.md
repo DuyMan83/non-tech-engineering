@@ -12,6 +12,7 @@ Người dùng kết thúc với một máy **đã chạy thử được**: lưu
 Skill này thường chạy **trước khi** có AGENTS.md / CLAUDE.md, nên tự tuân theo các quy tắc sau:
 - Người dùng **không biết code, không đọc được log**. Nói tiếng Việt, lời thường, không thuật ngữ; nếu buộc phải dùng thì giải thích trong ngoặc.
 - **Mỗi lần chỉ hỏi 1 câu**, kèm gợi ý câu trả lời.
+- **Mọi yêu cầu người dùng làm gì đều kèm 1 câu ngắn "để làm gì"** — bấm nút, dán lệnh, nhập mật khẩu, tạo tài khoản, trả lời câu hỏi. Mẫu: `**Bấm Install** — để cài Node.js, bộ máy chạy app web.` Không giải thích kỹ thuật, chỉ nói lợi ích/lý do bằng lời thường.
 - **Báo tiến độ**: "Bước 2/6 — ...".
 - Không in log thô. Lỗi → tóm tắt bằng 1–2 câu + bước tiếp theo.
 - Kết thúc mỗi lượt: **đã làm gì · bạn sẽ thấy gì · bước tiếp theo**.
@@ -54,13 +55,13 @@ Liệt kê kế hoạch theo thứ tự trong `tools.yaml` (tôn trọng `phu_th
 ### Bước 4 — Thực hiện theo thứ tự
 Đi lần lượt từng mục chưa xong (bỏ qua mục có `chi_he_dieu_hanh` khác máy hiện tại, và coi phụ thuộc vào mục đó là đã thoả; nếu `ai_lam` là map thì lấy theo hệ điều hành):
 - **`ai_lam: ai`** → chạy lệnh `cai` theo hệ điều hành → chạy lại `kiem_tra` ngay. Thất bại → **dừng**, giải thích lời thường, không tự thử cách khác.
-- **`ai_lam: ai-mo-trinh-cai`** → AI tải file cài và mở lên. Báo trước: "Sắp có cửa sổ cài đặt hiện ra — bấm Continue/Install, khi được hỏi thì nhập mật khẩu Mac vào cửa sổ đó, rồi bấm Close". Chờ "xong" → `kiem_tra`. Xong thì xoá file cài trong Downloads.
-- **`ai_lam: nguoi-dan-lenh`** → đưa đúng 1 lệnh trong khối code, nhắc mở hướng dẫn `mo-terminal.md`, báo trước những gì sẽ xảy ra (hỏi mật khẩu không hiện chữ, cửa sổ hiện ra...). Chờ "xong" → `kiem_tra`.
+- **`ai_lam: ai-mo-trinh-cai`** → AI tải file cài và mở lên. Báo trước: "Sắp có cửa sổ cài đặt hiện ra — bấm Continue/Install để cài <tên> (<vi_sao>); khi được hỏi thì nhập mật khẩu Mac vào cửa sổ đó để cho phép cài vào máy; rồi bấm Close". Chờ "xong" → `kiem_tra`. Xong thì xoá file cài trong Downloads.
+- **`ai_lam: nguoi-dan-lenh`** → nói lệnh này để làm gì và vì sao Claude không tự chạy được, đưa đúng 1 lệnh trong khối code, nhắc mở hướng dẫn `mo-terminal.md`, báo trước những gì sẽ xảy ra (hỏi mật khẩu không hiện chữ, cửa sổ hiện ra...). Chờ "xong" → `kiem_tra`.
 - **`ai_lam: nguoi`** → đọc file `huong_dan`, đưa **từng bước một** (không dán cả file), chờ "xong". Thu thập `thu_thap` mỗi lần 1 câu.
 
 Ghi chú riêng:
 - **github-login**: kết nối GitHub bằng **HTTPS qua GitHub CLI**, không dùng SSH key. Người dùng dán lệnh → làm theo `dang-nhap-github.md` (mã 1 lần + trình duyệt) → AI chạy `sau_khi_cai` → `kiem_tra`. Nếu username không khớp tài khoản đã tạo → báo, hỏi có muốn đăng nhập lại không.
-- **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code, rồi gõ "làm tiếp".
+- **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code — để máy nhận ra phần mềm vừa cài — rồi gõ "làm tiếp".
 - **Không cài Homebrew.** Trên Mac chỉ dùng file cài có giao diện như trong `tools.yaml`.
 - **Firebase**: không cài vào máy; mọi lệnh Firebase chạy qua `npx -y firebase-tools@latest ...`.
 - **vscode trên Mac**: có `/Applications/Visual Studio Code.app` là **đã có**, không cài lại; dùng lệnh `du_phong` của `claude-extension` khi không có lệnh `code`. Không tự thêm `code` vào PATH.

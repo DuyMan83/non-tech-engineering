@@ -24,5 +24,6 @@ description: Làm gì + KHI NÀO dùng. Đây là phần AI đọc để quyết
 1. **Một skill = một việc.** Tránh skill "làm mọi thứ".
 2. **Mô tả bằng ngôn ngữ đời thường** — người dùng sẽ gọi skill bằng câu nói tự nhiên.
 3. **Chia bước rõ ràng**, có điểm dừng để người dùng xác nhận trước khi AI làm việc khó hoàn tác.
-4. **Giải thích kết quả** bằng ngôn ngữ dễ hiểu, không chỉ in log kỹ thuật.
-5. **An toàn trước**: không xoá dữ liệu, không push, không deploy khi chưa hỏi.
+4. **Mọi yêu cầu người dùng làm gì đều kèm 1 câu ngắn "để làm gì"** (bấm nút, dán lệnh, nhập mật khẩu, tạo tài khoản...). Người non-tech làm theo tự tin hơn khi hiểu lý do, và dừng lại đúng lúc khi thấy điều gì không khớp.
+5. **Giải thích kết quả** bằng ngôn ngữ dễ hiểu, không chỉ in log kỹ thuật.
+6. **An toàn trước**: không xoá dữ liệu, không push, không deploy khi chưa hỏi.

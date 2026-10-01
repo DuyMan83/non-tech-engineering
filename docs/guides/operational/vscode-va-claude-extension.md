@@ -10,8 +10,8 @@ Thông thường **Claude sẽ cài giúp bạn**. Nếu cần tự cài:
 
 1. Vào **https://code.visualstudio.com** và bấm nút **Download** lớn.
 2. **macOS:** mở file vừa tải → kéo biểu tượng **Visual Studio Code** vào thư mục **Applications**.
-   **Windows:** mở file cài → bấm **Next** đến hết. Ở bước "Select Additional Tasks", **tích ô "Add to PATH"**.
-3. Mở VS Code lần đầu. macOS có thể hỏi "ứng dụng tải từ Internet, có mở không?" → bấm **Open**.
+   **Windows:** mở file cài → bấm **Next** đến hết. Ở bước "Select Additional Tasks", **tích ô "Add to PATH"** — *để Claude điều khiển được VS Code (ví dụ cài extension giúp bạn)*.
+3. Mở VS Code lần đầu. macOS có thể hỏi "ứng dụng tải từ Internet, có mở không?" → bấm **Open** — *Mac hỏi để chắc bạn tin ứng dụng này; VS Code là của Microsoft, an toàn*.
 
 ## Phần 2 — Cài Claude extension
 
@@ -19,12 +19,12 @@ Thông thường **Claude sẽ cài giúp bạn**. Nếu cần tự cài:
 
 1. Trong VS Code, bấm biểu tượng **Extensions** ở thanh bên trái (4 ô vuông), hoặc nhấn `⌘ Command`+`Shift`+`X` (Mac) / `Ctrl`+`Shift`+`X` (Windows).
 2. Gõ **Claude Code** vào ô tìm kiếm.
-3. Chọn extension do **Anthropic** phát hành (có dấu xác minh) → bấm **Install**.
+3. Chọn extension do **Anthropic** phát hành (có dấu xác minh) → bấm **Install** — *chọn đúng nhà phát hành để tránh bản giả mạo*.
 
 ## Phần 3 — Đăng nhập
 
 1. Bấm biểu tượng **Claude** (xuất hiện ở thanh bên hoặc góc trên bên phải sau khi cài).
-2. Làm theo hướng dẫn đăng nhập → trình duyệt mở ra → đăng nhập **tài khoản Claude** của bạn → **cho phép**.
+2. Làm theo hướng dẫn đăng nhập → trình duyệt mở ra → đăng nhập **tài khoản Claude** của bạn → **cho phép** — *để Claude trong VS Code dùng gói Claude bạn đã đăng ký*.
 3. Quay lại VS Code, thấy khung chat với Claude là xong.
 
 ## Xong khi

@@ -10,17 +10,17 @@ Bạn sẽ đăng nhập **qua trình duyệt**, không gõ mật khẩu vào Te
    ```
    gh auth login --hostname github.com --git-protocol https --web
    ```
-2. Nếu được hỏi **"Authenticate Git with your GitHub credentials?"** → nhấn `Enter` (chọn **Yes**).
-3. Terminal hiện ra một **mã gồm 8 ký tự**, dạng `ABCD-1234`. Ghi nhớ hoặc copy mã này.
+2. Nếu được hỏi **"Authenticate Git with your GitHub credentials?"** → nhấn `Enter` (chọn **Yes**) — *để Git dùng chung đăng nhập này khi lưu code*.
+3. Terminal hiện ra một **mã gồm 8 ký tự**, dạng `ABCD-1234`. Ghi nhớ hoặc copy mã này — *để GitHub biết lần đăng nhập trên trình duyệt là cho đúng máy này*.
    > Mã này chỉ dùng một lần, **không cần gửi cho Claude**.
 4. Nhấn `Enter` → trình duyệt tự mở trang GitHub.
 5. Đăng nhập GitHub nếu được hỏi → nhập **mã 8 ký tự** ở bước 3 → **Continue**.
-6. Bấm **Authorize github** (cho phép).
+6. Bấm **Authorize github** — *để cho phép máy này lưu code vào tài khoản của bạn*.
 7. Trình duyệt báo **"Congratulations, you're all set!"**. Terminal hiện **"Logged in as ..."**.
 
 ## Xong khi
 
-Terminal hiện dòng `Logged in as <tên của bạn>`. Quay lại Claude và gõ **"xong"**.
+Terminal hiện dòng `Logged in as <tên của bạn>`. Quay lại Claude và gõ **"xong"** — *để Claude kiểm tra kết nối*.
 
 ## Gặp vấn đề?
 

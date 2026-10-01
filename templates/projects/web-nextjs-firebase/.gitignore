@@ -4,11 +4,9 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 
-# Cấu hình thật / bí mật — không commit
-.env*.local
-# File mẫu / cấu hình giả lập (không có bí mật) — được commit
-!.env.development
-!.env.production.example
+# Cấu hình môi trường nằm trong config/*.env và ĐƯỢC commit (không chứa bí mật).
+# Không dùng file .env* — nếu lỡ tạo thì không commit.
+.env*
 
 # Firebase
 *-debug.log

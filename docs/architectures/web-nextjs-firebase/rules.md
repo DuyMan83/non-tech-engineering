@@ -16,9 +16,10 @@
 ├── firestore.rules
 ├── firestore.indexes.json
 ├── firebase.json         # Hosting trỏ tới out/
-├── .env.development      # Chạy trên máy: Emulator + dự án demo (commit được, không có bí mật)
-├── .env.production.example  # Mẫu cấu hình thật
-├── .env.production.local # Cấu hình Firebase thật cho build/deploy — KHÔNG commit
+├── config/
+│   ├── dev.env           # Môi trường dev: Emulator + dự án demo-... (mặc định)
+│   └── production.env    # Môi trường production: cấu hình Firebase thật (không phải bí mật, được commit)
+├── scripts/              # build.mjs, run.mjs, deploy.mjs — đọc config/<môi trường>.env
 ├── AGENTS.md / CLAUDE.md
 └── package.json          # scripts: dev, build, check, deploy
 ```
@@ -35,8 +36,10 @@
 
 ## W3. Firebase
 - Khởi tạo SDK **một lần** trong `src/data/firebase.ts`, đọc cấu hình từ `process.env.NEXT_PUBLIC_FIREBASE_*`.
-- `npm run dev` dùng `.env.development` (Emulator, dự án `demo-...`) — **không bao giờ đụng dữ liệu thật**.
-- `npm run build` / `deploy` dùng `.env.production.local` (không commit), tạo từ `.env.production.example`.
+- Mỗi môi trường là **một file `config/<tên>.env`**. Thêm môi trường (vd `staging`) = thêm file `config/staging.env`.
+- Không dùng file `.env*` của Next.js (bị `.gitignore` chặn) — để tránh hai nguồn cấu hình.
+- `config/*.env` chỉ chứa cấu hình Firebase phía web (không phải bí mật). **Bí mật thật không bao giờ ghi vào đây.**
+- `dev` luôn dùng bộ giả lập (`NEXT_PUBLIC_USE_EMULATORS=true`, dự án `demo-...`) — **không bao giờ đụng dữ liệu thật**.
 - Phát triển và test dùng **Firebase Emulator** (Auth + Firestore), không đụng dữ liệu thật. Emulator cần **Java 21+** (skill `thiet-lap-moi-truong` cài).
 
 ## W4. Ranh giới bằng ESLint
@@ -50,12 +53,15 @@ Cấu hình `no-restricted-imports` theo thư mục (ví dụ):
 | `src/data/**` | `@/app/*`, `@/ui/*`, `react`, `next/*` |
 
 ## W5. Lệnh
-| Lệnh | Việc |
-|---|---|
-| `npm run dev` | Chạy thử trên máy (cùng Emulator) |
-| `npm run check` | `tsc --noEmit` → ESLint → Vitest → test `firestore.rules` trên Emulator |
-| `npm run build` | Xuất tĩnh ra `out/` |
-| `npm run deploy` | `build` rồi `firebase deploy --only hosting,firestore:rules` — **hỏi người dùng trước** |
+| Lệnh | Mặc định | Việc |
+|---|---|---|
+| `npm start [môi trường]` | `dev` | `dev`: Next.js + Emulator, http://localhost:3000. Môi trường thật: build rồi chạy trên máy (http://localhost:5002) với **dữ liệu thật** — cần xác nhận |
+| `npm run build [môi trường]` | `dev` | Xuất tĩnh ra `out/` với cấu hình `config/<môi trường>.env` |
+| `npm run deploy [môi trường]` | `production` | `check` → `build` → `firebase deploy --only hosting,firestore`. **Ghi đè** bản trên mạng — cần xác nhận. Không deploy được `dev` |
+| `npm run check` | — | `tsc --noEmit` → ESLint → Vitest → test `firestore.rules` trên Emulator |
+
+**Xác nhận việc nguy hiểm** (`start <thật>`, `deploy`): script tự in cảnh báo và dừng nếu chưa có `--xac-nhan`.
+AI **trình bày cảnh báo cho người dùng theo mẫu trình bày, chờ họ đồng ý**, rồi mới chạy lại với `-- --xac-nhan` (vd `npm run deploy -- --xac-nhan`). Người dùng tự gõ lệnh trong Terminal → script hỏi họ gõ lại mã dự án.
 
 ## W6. PWA (cài lên màn hình chính)
 - Có `manifest.webmanifest` + icon. Không thêm service worker phức tạp khi chưa cần offline.

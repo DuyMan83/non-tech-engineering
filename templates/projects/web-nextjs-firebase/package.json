@@ -4,12 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "firebase emulators:exec --only auth,firestore --project demo-khung-du-an \"next dev\"",
-    "build": "next build",
+    "start": "node scripts/run.mjs",
+    "dev": "node scripts/run.mjs dev",
+    "build": "node scripts/build.mjs",
+    "deploy": "node scripts/deploy.mjs",
     "check": "tsc --noEmit && eslint . && vitest run && npm run test:rules",
     "test": "vitest run",
-    "test:rules": "firebase emulators:exec --only firestore --project demo-khung-du-an \"vitest run --config vitest.rules.config.ts\"",
-    "deploy": "next build && firebase deploy --only hosting,firestore"
+    "test:rules": "firebase emulators:exec --only firestore --project demo-khung-du-an \"vitest run --config vitest.rules.config.ts\""
   },
   "dependencies": {
     "firebase": "^12.19.0",

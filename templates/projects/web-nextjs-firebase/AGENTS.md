@@ -10,12 +10,22 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 - **Rules bắt buộc:** [`docs/kien-truc/clean-rules.md`](docs/kien-truc/clean-rules.md) và [`docs/kien-truc/rules.md`](docs/kien-truc/rules.md).
 - 4 lớp: `src/domain` → `src/services` → `src/data` (Firebase) / `src/ui` → `src/app`. Nối ở `src/composition.ts`.
 
+## Môi trường (`config/`)
+| File | Môi trường | Dữ liệu |
+|---|---|---|
+| `config/dev.env` | **dev** (mặc định) | Bộ giả lập trên máy — dữ liệu thử |
+| `config/production.env` | **production** | Firebase thật — dữ liệu THẬT. Điền từ Firebase console khi đưa lên mạng lần đầu |
+
 ## Lệnh
 | Lệnh | Việc |
 |---|---|
-| `npm run dev` | Chạy thử trên máy với Firebase Emulator (không đụng dữ liệu thật) — mở http://localhost:3000 |
+| `npm start` | Chạy **dev** trên máy — mở http://localhost:3000 |
+| `npm start production` | Chạy trên máy với **dữ liệu thật** — cần xác nhận |
+| `npm run build` / `npm run build production` | Build bản dev (mặc định) / production → thư mục `out/` |
 | `npm run check` | Kiểm tra toàn bộ: kiểu dữ liệu → ranh giới lớp → test → luật bảo mật. **Phải pass trước khi lưu điểm.** |
-| `npm run deploy` | Đưa lên mạng — **hỏi người dùng trước** |
+| `npm run deploy` | Đưa bản **production** lên mạng, **ghi đè** bản đang chạy — cần xác nhận |
+
+**Xác nhận:** `npm start production` và `npm run deploy` tự dừng và in cảnh báo nếu chưa xác nhận. AI phải **trình bày cảnh báo cho người dùng, chờ họ đồng ý**, rồi mới chạy lại với `-- --xac-nhan`. Không bao giờ tự thêm `--xac-nhan` khi người dùng chưa đồng ý.
 
 ## Use case (`src/services/`)
 | File | Việc |

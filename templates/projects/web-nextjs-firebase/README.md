@@ -10,5 +10,7 @@ Thử khung (cần Node 20+ và Java 21+):
 ```bash
 npm install
 npm run check
-npm run dev
+npm start                 # dev, bộ giả lập — http://localhost:3000
+npm run build production  # cần điền config/production.env trước
+npm run deploy            # production, hỏi xác nhận trước khi ghi đè
 ```

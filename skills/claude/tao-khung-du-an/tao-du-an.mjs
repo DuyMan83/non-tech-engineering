@@ -84,7 +84,7 @@ function main() {
   const pkg = JSON.parse(fs.readFileSync(pkgFile, "utf8"));
   pkg.name = slug;
   fs.writeFileSync(pkgFile, JSON.stringify(pkg, null, 2) + "\n");
-  for (const f of ["package.json", ".env.development", "tests/firestore.rules.test.ts"]) {
+  for (const f of ["package.json", "config/dev.env", "tests/firestore.rules.test.ts"]) {
     thayTrongFile(path.join(dich, f), [[DEMO_ID_KHUNG, demoId]]);
   }
   for (const f of ["src/app/layout.tsx", "public/manifest.webmanifest"]) {

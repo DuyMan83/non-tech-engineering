@@ -61,7 +61,7 @@ app → ui → services → domain
 
 19. **`firestore.rules` không bao giờ để mở** (`allow read, write: if true`). Mặc định chặn hết, mở từng collection theo nhu cầu.
 20. **Mỗi collection mới phải có luật đi kèm và có test** (chạy trên Firebase Emulator, nằm trong `npm run check`).
-21. Cấu hình Firebase phía client (apiKey, projectId...) **không phải bí mật** nhưng vẫn để ngoài code: `.env.development` / `.env.production.local` (web) hoặc `.env` (mobile), có file mẫu đi kèm. Bảo mật thật nằm ở **luật Firestore**.
+21. Cấu hình Firebase phía client (apiKey, projectId...) **không phải bí mật** nhưng vẫn để ngoài code: `config/<môi trường>.env` (web) hoặc `.env` (mobile), có file mẫu đi kèm. Bảo mật thật nằm ở **luật Firestore**.
 22. **Bí mật thật** (service account, private key, key API trả phí) **không bao giờ** nằm trong code client hay trong repo.
 23. Mặc định dùng **gói Spark miễn phí**. Tính năng cần gói Blaze (Cloud Functions, App Hosting...) → hỏi người dùng trước, nói rõ chi phí.
 

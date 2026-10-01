@@ -66,7 +66,7 @@ Nói với người dùng: *"Đã lưu điểm đầu tiên — sau này hỏng 
 **Đưa lên GitHub** (tạo repo riêng tư) — **hỏi trước**, giải thích: để sao lưu code trên mạng, chỉ bạn thấy. Đồng ý → `gh repo create <slug> --private --source . --push`. Chưa đăng nhập GitHub → đề nghị `thiet-lap-moi-truong`.
 
 ### Bước 8 — Cho người dùng xem app chạy
-Chạy `npm run dev` ở chế độ nền (giữ chạy), chờ thấy `Ready`, rồi trình bày theo mẫu:
+Chạy `npm start` (mặc định môi trường dev, bộ giả lập) ở chế độ nền (giữ chạy), chờ thấy `Ready`, rồi trình bày theo mẫu:
 
 ~~~markdown
 **Xem app của bạn đang chạy**
@@ -92,6 +92,7 @@ Nếu công cụ cho phép, tự mở trình duyệt / chụp màn hình gửi n
 - **Không bỏ qua** `npm run check`; không lưu điểm khi check fail.
 - Không sửa khung trong repo `non-tech-engineering` — chỉ làm trong thư mục dự án mới.
 - Tạo repo GitHub, push → luôn hỏi trước.
+- Không chạy `npm start production` / `npm run deploy` trong skill này.
 
 ## Ngoài phạm vi
 Thêm tính năng, đổi đăng nhập ẩn danh sang Google/email, kết nối Firebase thật, deploy, khung mobile.

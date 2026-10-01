@@ -16,11 +16,18 @@
 
 ## Phần 2 — Cho máy tính đăng nhập Firebase (làm 1 lần)
 
-Claude sẽ nhờ bạn dán lệnh sau vào Terminal (xem [mo-terminal.md](mo-terminal.md)):
+Claude sẽ nhờ bạn dán lệnh sau vào Terminal. Dễ nhất là dùng Terminal **ngay trong VS Code**: menu **Terminal → New Terminal** (hoặc xem [mo-terminal.md](mo-terminal.md)).
 
+**macOS:**
 ```
-firebase login
+npx -y firebase-tools@latest login
 ```
+**Windows:**
+```
+npx.cmd -y firebase-tools@latest login
+```
+
+Lần đầu chạy sẽ mất khoảng 1 phút để tải công cụ Firebase — cứ đợi.
 
 1. Nếu được hỏi có cho phép thu thập thông tin không (`Allow Firebase to collect...`), gõ `n` hoặc `Y` tuỳ ý rồi `Enter`.
 2. Trình duyệt tự mở ra → chọn **đúng tài khoản Google** ở Phần 1 → bấm **Allow / Cho phép**.

@@ -1,6 +1,6 @@
 ---
 name: thiet-lap-moi-truong
-description: Thiết lập máy tính để người không biết code bắt đầu vibe coding - cài Git, Node.js, VS Code, Claude extension, công cụ Firebase; GitHub CLI; hướng dẫn tạo tài khoản GitHub, đăng nhập GitHub (HTTPS), Firebase. Dùng khi người dùng mới bắt đầu, nói "cài đặt máy", "chuẩn bị môi trường", "máy tôi đã sẵn sàng chưa", hoặc khi một skill khác báo thiếu công cụ / gặp lỗi lạ về môi trường. Chạy lại nhiều lần an toàn.
+description: Thiết lập máy tính để người không biết code bắt đầu vibe coding - cài Git, Node.js, VS Code, Claude extension, GitHub CLI (không dùng Homebrew); hướng dẫn tạo tài khoản GitHub, đăng nhập GitHub (HTTPS), Firebase. Dùng khi người dùng mới bắt đầu, nói "cài đặt máy", "chuẩn bị môi trường", "máy tôi đã sẵn sàng chưa", hoặc khi một skill khác báo thiếu công cụ / gặp lỗi lạ về môi trường. Chạy lại nhiều lần an toàn.
 ---
 
 # Thiết lập môi trường
@@ -42,7 +42,7 @@ Dùng đúng mẫu:
 Kết quả kiểm tra máy của bạn:
 
 ✅ Đã sẵn sàng:      Git, VS Code
-🤖 Claude sẽ cài:    Node.js, công cụ Firebase
+🤖 Claude sẽ cài:    Node.js, GitHub CLI
 🙋 Cần bạn làm:      Tạo tài khoản GitHub, đăng nhập GitHub trên máy
 ⚠️ Cần chú ý:        (xung đột, ví dụ Node quá cũ)
 ```
@@ -52,16 +52,18 @@ Mỗi mục kèm `vi_sao` ngắn. Chế độ `kiem-tra` → dừng ở đây.
 Liệt kê kế hoạch theo thứ tự trong `tools.yaml` (tôn trọng `phu_thuoc`), ước lượng thời gian, rồi hỏi **một lần**: "Mình bắt đầu nhé?". Không hỏi lại từng gói.
 
 ### Bước 4 — Thực hiện theo thứ tự
-Đi lần lượt từng mục chưa xong (bỏ qua mục có `chi_he_dieu_hanh` khác máy hiện tại, và coi phụ thuộc vào mục đó là đã thoả):
+Đi lần lượt từng mục chưa xong (bỏ qua mục có `chi_he_dieu_hanh` khác máy hiện tại, và coi phụ thuộc vào mục đó là đã thoả; nếu `ai_lam` là map thì lấy theo hệ điều hành):
 - **`ai_lam: ai`** → chạy lệnh `cai` theo hệ điều hành → chạy lại `kiem_tra` ngay. Thất bại → **dừng**, giải thích lời thường, không tự thử cách khác.
+- **`ai_lam: ai-mo-trinh-cai`** → AI tải file cài và mở lên. Báo trước: "Sắp có cửa sổ cài đặt hiện ra — bấm Continue/Install, khi được hỏi thì nhập mật khẩu Mac vào cửa sổ đó, rồi bấm Close". Chờ "xong" → `kiem_tra`. Xong thì xoá file cài trong Downloads.
 - **`ai_lam: nguoi-dan-lenh`** → đưa đúng 1 lệnh trong khối code, nhắc mở hướng dẫn `mo-terminal.md`, báo trước những gì sẽ xảy ra (hỏi mật khẩu không hiện chữ, cửa sổ hiện ra...). Chờ "xong" → `kiem_tra`.
 - **`ai_lam: nguoi`** → đọc file `huong_dan`, đưa **từng bước một** (không dán cả file), chờ "xong". Thu thập `thu_thap` mỗi lần 1 câu.
 
 Ghi chú riêng:
 - **github-login**: kết nối GitHub bằng **HTTPS qua GitHub CLI**, không dùng SSH key. Người dùng dán lệnh → làm theo `dang-nhap-github.md` (mã 1 lần + trình duyệt) → AI chạy `sau_khi_cai` → `kiem_tra`. Nếu username không khớp tài khoản đã tạo → báo, hỏi có muốn đăng nhập lại không.
 - **Windows**: sau khi cài Git/Node/VS Code, lệnh mới có thể chưa nhận → bảo người dùng **tắt hẳn và mở lại** Claude/VS Code, rồi gõ "làm tiếp".
-- **homebrew (Apple Silicon)**: chạy phần `sau_khi_cai`, báo trước sẽ thêm 1 dòng vào `~/.zprofile`.
-- **vscode trên Mac cài tay** (có `/Applications/Visual Studio Code.app` nhưng không có lệnh `code`): coi VS Code là **đã có**, không cài lại; dùng lệnh `du_phong` của `claude-extension`. Không tự thêm `code` vào PATH.
+- **Không cài Homebrew.** Trên Mac chỉ dùng file cài có giao diện như trong `tools.yaml`.
+- **Firebase**: không cài vào máy; mọi lệnh Firebase chạy qua `npx -y firebase-tools@latest ...`.
+- **vscode trên Mac**: có `/Applications/Visual Studio Code.app` là **đã có**, không cài lại; dùng lệnh `du_phong` của `claude-extension` khi không có lệnh `code`. Không tự thêm `code` vào PATH.
 - **claude-extension**: cài xong, hướng dẫn Phần 3 của `vscode-va-claude-extension.md` để đăng nhập.
 
 Sau mỗi mục: cập nhật file trạng thái.
@@ -70,7 +72,7 @@ Sau mỗi mục: cập nhật file trạng thái.
 Trong thư mục tạm:
 1. `git init`, tạo 1 file, `git commit` → lưu điểm được.
 2. `gh auth status` thành công và `git config --global --get-regexp 'credential.*github.com.*helper'` có `gh` → Git lưu code lên GitHub được.
-3. Gói `web`: `node -e "console.log('ok')"` và `firebase login:list` có email.
+3. Gói `web`: `node -e "console.log('ok')"` và `npx -y firebase-tools@latest login:list` có email.
 4. Xoá thư mục tạm.
 
 ### Bước 6 — Kết thúc

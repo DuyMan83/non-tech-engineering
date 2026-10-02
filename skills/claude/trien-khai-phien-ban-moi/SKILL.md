@@ -57,7 +57,7 @@ Có gì mới:
 - **Ai thấy, khi nào:** <web: mọi người vào https://<id>.web.app, ngay sau khi xong · mobile update: lần mở app tiếp theo · mobile store: sau khi store duyệt (vài giờ – vài ngày)>
 - **Dữ liệu:** <không đổi gì / luật "ai được xem/sửa gì" có đổi: <lời thường>>
 - **Chi phí:** <0đ (gói miễn phí) / tốn 1 lượt build Expo / cần tài khoản store>
-- **Đã kiểm tra:** <N> ca test tự động xanh; bạn đã nghiệm thu các tính năng trên ngày <…>.
+- **Đã kiểm tra:** <N> ca test tự động xanh; bạn đã nghiệm thu các tính năng trên ngày <…>; kiểm thử độc lập: <kết luận gần nhất từ phiếu, hoặc "chưa có" — nếu chưa có / khuyến nghị "chưa", nói rõ và gợi ý chạy skill `kiem-thu-doc-lap` trước>.
 - **Lùi lại được không:** <web: được, khoảng 1 phút · mobile update: được, gửi lại bản trước · mobile store: không rút lại được bản đã duyệt, chỉ gửi bản sửa>
 
 Gõ **đồng ý** để đưa lên, hoặc **để sau**.

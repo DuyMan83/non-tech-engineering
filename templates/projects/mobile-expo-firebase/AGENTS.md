@@ -58,6 +58,9 @@ Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập 
 |---|---|---|
 | — | — | — |
 
+## Kiểm thử độc lập (`docs/kiem-thu/`)
+Skill `kiem-thu-doc-lap`: chỉ đọc tài liệu + chạy app, không đọc code (hook trong `.claude/settings.json` chặn khi có file `.kiem-thu-dang-chay`). Nên chạy trong một phiên Claude mới, trước khi triển khai.
+
 ## Phiên bản (`docs/phien-ban.md`)
 Đưa lên cho người dùng thật / lùi về bản trước → skill `trien-khai-phien-ban-moi`. Phiên bản đang chạy: **chưa triển khai**.
 

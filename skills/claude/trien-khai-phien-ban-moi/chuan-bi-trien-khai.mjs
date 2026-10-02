@@ -67,6 +67,18 @@ if (kienTruc === "mobile") {
   canGuiStore = !tagTruoc || doiThuVien || doiAppConfig;
 }
 
+// 7. Kết luận kiểm thử độc lập gần nhất (không chặn, chỉ hiện trong phiếu)
+const baoCao = fs.existsSync("docs/kiem-thu")
+  ? fs.readdirSync("docs/kiem-thu").filter((f) => f.endsWith(".md")).sort().reverse()[0] ?? null
+  : null;
+const kiemThu = baoCao
+  ? {
+      file: `docs/kiem-thu/${baoCao}`,
+      khuyenNghi:
+        fs.readFileSync(`docs/kiem-thu/${baoCao}`, "utf8").match(/\*\*Khuyến nghị:\*\*\s*(.+)/)?.[1]?.replace(/\*\*/g, "").trim() ?? "(không ghi)",
+    }
+  : null;
+
 const ngay = new Date().toISOString().slice(0, 10);
 const cungNgay = sh(`git tag --list 'phien-ban-${ngay}*'`).split("\n").filter(Boolean).length;
 const tagMoi = `phien-ban-${ngay}${cungNgay ? `-${cungNgay + 1}` : ""}`;
@@ -85,6 +97,7 @@ const phieu = {
   lanGop,
   luatBaoMatDoi: luatDoi,
   canGuiStore,
+  kiemThu,
 };
 
 if (process.argv.includes("--json")) {
@@ -98,6 +111,7 @@ if (process.argv.includes("--json")) {
   console.log(`  Các lần gộp         : ${lanGop.length}`);
   console.log(`  Luật dữ liệu đổi    : ${d(luatDoi)}`);
   if (kienTruc === "mobile") console.log(`  Phải gửi lại store  : ${d(canGuiStore)}`);
+  console.log(`  Kiểm thử độc lập    : ${kiemThu ? `${kiemThu.file} — ${kiemThu.khuyenNghi}` : "chưa có (nên chạy skill kiem-thu-doc-lap)"}`);
   console.log(`  Lần đầu / thiếu cấu hình: ${lanDau ? `có${thieuCauHinh.length ? ` (thiếu ${thieuCauHinh.join(", ")})` : ""}` : "không"}`);
   console.log(chuaSanSang.length ? `✖ Chưa sẵn sàng:\n${chuaSanSang.map((l) => `  - ${l}`).join("\n")}` : "✔ Sẵn sàng.");
 }

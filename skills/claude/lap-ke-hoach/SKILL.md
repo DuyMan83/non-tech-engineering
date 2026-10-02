@@ -54,7 +54,8 @@ Liệt kê điều có thể hỏng — về dữ liệu, quyền, mất mạng,
 2. **Tích hợp** — việc của app (`services`) chạy qua `data/` thật trên bộ giả lập, có bật luật bảo mật (`tests/*.integration.test.ts`, chạy trong `npm run check`). Bắt được lỗi mà unit test với dữ liệu giả không thấy: ghi sai kiểu dữ liệu, luật chặn nhầm, truy vấn sai. **Mọi tính năng có đọc/ghi dữ liệu phải có test tích hợp.**
 3. **Luật bảo mật** — collection hoặc quyền mới → ca được phép và ca bị chặn (`tests/firestore.rules.test.ts`).
 4. **Unit** — chỉ cho **trường hợp rủi ro**: biên, rỗng, lỗi, quá giới hạn, quyền. **Không viết unit test cho code hiển nhiên** (gán giá trị, gọi thẳng qua).
-5. **Giao diện** — luồng người dùng: AI tự chạy app (trình duyệt tự động với web, máy ảo / Expo với mobile), đi hết "Bạn tự thử", chụp màn hình gửi người dùng.
+5. **Mất mạng / lỗi giữa chừng** — ngoài test giả lập lỗi, phải có ít nhất một kiểm tra **mất mạng thật** (chế độ offline của trình duyệt / máy bay) qua giao diện: SDK có thể **chờ** thay vì báo lỗi, nên test giả lập lỗi xanh mà hành vi thật vẫn sai.
+6. **Giao diện** — luồng người dùng: AI tự chạy app (trình duyệt tự động với web, máy ảo / Expo với mobile), đi hết "Bạn tự thử", chụp màn hình gửi người dùng.
 
 **Ma trận phủ.** Mỗi mã NT/TD → test nào phủ. Không mã nào trống.
 

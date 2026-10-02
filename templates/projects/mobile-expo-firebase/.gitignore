@@ -31,3 +31,6 @@ expo-env.d.ts
 npm-debug.*
 *.tsbuildinfo
 .DS_Store
+
+# Đánh dấu đang kiểm thử độc lập (skill kiem-thu-doc-lap) — không commit
+.kiem-thu-dang-chay

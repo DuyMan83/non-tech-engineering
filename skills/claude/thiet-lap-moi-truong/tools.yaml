@@ -1,0 +1,202 @@
+# Danh sách công cụ và tài khoản cho skill thiet-lap-moi-truong.
+# Thêm công cụ mới = thêm 1 mục. Thứ tự trong file = thứ tự thực hiện.
+#
+# Trường:
+#   id            mã nội bộ
+#   ten           tên hiển thị cho người dùng (lời thường)
+#   vi_sao        1 câu giải thích vì sao cần, bằng lời thường
+#   goi           các gói cần mục này: co-ban | web | day-du
+#   ai_lam        ai | ai-mo-trinh-cai (AI tải file cài và mở lên, người bấm qua cửa sổ cài đặt)
+#                 | nguoi-dan-lenh (người tự dán vào Terminal) | nguoi (thao tác trên web)
+#                 Có thể là map theo hệ điều hành: {macos: ..., windows: ...}
+#
+# KHÔNG dùng Homebrew: trên Mac cài bằng file cài có giao diện (.pkg / .app) để người dùng
+# không phải gõ mật khẩu trong Terminal. Skill nào sau này cần Homebrew thì tự cài lúc cần.
+#   kiem_tra      lệnh kiểm tra; thành công = exit code 0 (trừ khi có kiem_tra_chuoi)
+#   kiem_tra_chuoi  chuỗi phải xuất hiện trong output để coi là OK
+#   phien_ban_toi_thieu  (tuỳ chọn) so với output của lệnh kiem_tra
+#   cai.macos / cai.windows  lệnh cài theo hệ điều hành
+#   huong_dan     file hướng dẫn cho người dùng, tương đối với docs/guides/operational/
+#   phu_thuoc     các id phải xong trước
+#
+# cap_nhat: ngày soạn lần cuối. da_thu_may_that: đã chạy thử trên máy thật chưa.
+# CHÚ Ý: các lệnh dưới đây CHƯA được thử trên máy thật — cần kiểm chứng trước khi phát hành.
+
+cap_nhat: 2026-10-01
+da_thu_may_that: false
+
+cong_cu:
+  - id: git
+    ten: Git (công cụ lưu điểm cho code)
+    vi_sao: Để lưu lại từng bước làm và quay lại được khi hỏng.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: git --version
+    ghi_chu: >
+      Git thường ĐÃ CÓ vì người dùng cài ở bước khởi đầu (docs/guides/operational/getting-started.md) —
+      cần git để tải bộ skill về. Lệnh cài dưới đây chỉ là dự phòng.
+      macOS: git đến từ Command Line Tools của Apple là đủ.
+    cai:
+      macos: xcode-select --install   # mở hộp thoại, người dùng bấm Install
+      windows: winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
+
+  - id: winget
+    ten: Trình cài phần mềm của Windows (App Installer / winget)
+    vi_sao: Để Claude cài Node.js, Java, VS Code... giúp bạn chỉ bằng một lệnh.
+    goi: [co-ban, web, day-du]
+    chi_he_dieu_hanh: windows
+    ai_lam: ai-mo-trinh-cai   # AI mở trang Microsoft Store, người bấm Get/Update
+    kiem_tra: winget --version
+    cai:
+      windows: explorer.exe "ms-windows-store://pdp/?productid=9NBLGGH4NNS1"
+    ghi_chu: >
+      Windows 11 và Windows 10 bản mới thường đã có sẵn. Thiếu thì mở trang "App Installer" trên Microsoft Store
+      (dự phòng: https://apps.microsoft.com/detail/9nblggh4nns1), người dùng bấm Get hoặc Update.
+      Đã cài mà vẫn báo không có lệnh winget → bảo người dùng tắt hẳn và mở lại Claude.
+      Máy công ty chặn Microsoft Store → không tự xử lý; soạn tin nhắn mẫu để người dùng nhờ bộ phận IT.
+    huong_dan: cai-app-installer.md
+
+  - id: node
+    ten: Node.js (bộ máy chạy app web)
+    vi_sao: Cần để chạy app web và công cụ Firebase.
+    goi: [web, day-du]
+    ai_lam: {macos: ai-mo-trinh-cai, windows: ai}
+    kiem_tra: node --version
+    phien_ban_toi_thieu: "20"
+    cai:
+      macos: >
+        Lấy phiên bản LTS mới nhất từ https://nodejs.org/dist/index.json (mục đầu tiên có "lts" khác false),
+        tải https://nodejs.org/dist/<version>/node-<version>.pkg vào ~/Downloads rồi `open` file đó.
+        Người dùng bấm Continue → Agree → Install, nhập mật khẩu Mac trong cửa sổ → Close.
+      windows: winget install --id OpenJS.NodeJS.LTS -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [winget]
+
+  - id: java
+    ten: Java (cần cho bộ giả lập Firebase)
+    vi_sao: Để chạy thử dữ liệu và luật bảo mật trên máy bằng bộ giả lập Firebase, không đụng dữ liệu thật.
+    goi: [web, day-du]
+    ai_lam: {macos: ai-mo-trinh-cai, windows: ai}
+    kiem_tra: java -version   # in ra stderr
+    phien_ban_toi_thieu: "21"
+    cai:
+      macos: >
+        Tải bản Temurin JDK 21 (.pkg) đúng chip:
+        https://api.adoptium.net/v3/installer/latest/21/ga/mac/aarch64/jdk/hotspot/normal/eclipse (Apple Silicon)
+        hoặc .../mac/x64/... (Intel) vào ~/Downloads rồi `open` file đó.
+        Người dùng bấm Continue → Install, nhập mật khẩu Mac trong cửa sổ → Close.
+      windows: winget install --id EclipseAdoptium.Temurin.21.JDK -e --accept-source-agreements --accept-package-agreements
+    ghi_chu: Máy đã có Java cũ hơn 21 → báo và hỏi, không gỡ bản cũ.
+    phu_thuoc: [winget]
+
+  - id: vscode
+    ten: Visual Studio Code (nơi làm việc với code)
+    vi_sao: Để xem code, chạy app và trò chuyện với Claude ngay cạnh code.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: code --version
+    kiem_tra_du_phong:
+      macos: test -d "/Applications/Visual Studio Code.app"
+    ghi_chu: >
+      macOS: thường không có lệnh `code` (không thêm vào PATH). Luôn dùng đường dẫn đầy đủ
+      "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" cho mọi lệnh `code`.
+    cai:
+      macos: >
+        curl -fL -o ~/Downloads/vscode.zip "https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal"
+        && unzip -q -o ~/Downloads/vscode.zip -d ~/Downloads/vscode
+        && mv "$HOME/Downloads/vscode/Visual Studio Code.app" /Applications/
+        && rm -rf ~/Downloads/vscode ~/Downloads/vscode.zip
+        (Nếu không chuyển được vào /Applications vì thiếu quyền → mở Finder cho người dùng tự kéo vào.)
+      windows: winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
+    huong_dan: vscode-va-claude-extension.md
+    phu_thuoc: [winget]
+
+  - id: claude-extension
+    ten: Claude trong VS Code
+    vi_sao: Để trò chuyện với Claude ngay trong VS Code.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: code --list-extensions
+    kiem_tra_chuoi: anthropic.claude-code
+    cai:
+      macos: code --install-extension anthropic.claude-code
+      windows: code --install-extension anthropic.claude-code
+    du_phong:   # VS Code cài tay trên Mac, không có lệnh `code`
+      kiem_tra_macos: '"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" --list-extensions'
+      cai_macos: '"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" --install-extension anthropic.claude-code'
+    sau_khi_cai: Người dùng phải tự đăng nhập tài khoản Claude trong extension (Phần 3 của hướng dẫn).
+    phu_thuoc: [vscode]
+    huong_dan: vscode-va-claude-extension.md
+
+  - id: gh
+    ten: GitHub CLI (công cụ kết nối máy với GitHub)
+    vi_sao: Để máy đăng nhập GitHub một lần qua trình duyệt, sau đó lưu code lên GitHub không cần gõ mật khẩu.
+    goi: [co-ban, web, day-du]
+    ai_lam: {macos: ai-mo-trinh-cai, windows: ai}
+    kiem_tra: gh --version
+    cai:
+      macos: >
+        Lấy link file *_macOS_universal.pkg từ https://api.github.com/repos/cli/cli/releases/latest
+        (trường assets[].browser_download_url), tải vào ~/Downloads rồi `open` file đó.
+        Người dùng bấm Continue → Install, nhập mật khẩu Mac trong cửa sổ → Close.
+      windows: winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements
+    phu_thuoc: [winget]
+
+tai_khoan:
+
+  - id: github-account
+    ten: Tài khoản GitHub
+    vi_sao: Nơi sao lưu code trên mạng.
+    goi: [co-ban, web, day-du]
+    ai_lam: nguoi
+    huong_dan: tao-tai-khoan-github.md
+    ghi_chu: Khi repo bộ skill còn private, người dùng đã tạo tài khoản ở getting-started.md — hỏi "bạn đã có tài khoản GitHub chưa?" trước khi hướng dẫn.
+    thu_thap: [ho_ten, github_username, github_email]   # hỏi lần lượt, mỗi lần 1 câu
+
+  - id: git-identity
+    ten: Tên và email cho Git
+    vi_sao: Để mỗi điểm lưu ghi rõ ai làm.
+    goi: [co-ban, web, day-du]
+    ai_lam: ai
+    kiem_tra: git config --global user.email
+    cai:
+      tat_ca: git config --global user.name "<ho_ten>" && git config --global user.email "<github_email>"
+    phu_thuoc: [git, github-account]
+
+  - id: github-login
+    ten: Đăng nhập GitHub trên máy
+    vi_sao: Để máy được phép lưu code lên GitHub của bạn (kết nối HTTPS).
+    goi: [co-ban, web, day-du]
+    ai_lam: nguoi-dan-lenh   # lệnh tương tác: hiện mã 1 lần, mở trình duyệt
+    kiem_tra: gh auth status --hostname github.com
+    cai:
+      tat_ca: gh auth login --hostname github.com --git-protocol https --web
+    sau_khi_cai: >
+      AI chạy `gh auth setup-git` để Git dùng đăng nhập của gh khi lưu code lên GitHub.
+      Lấy username bằng `gh api user --jq .login`, so với github_username đã thu thập.
+    ghi_chu: Thông tin đăng nhập do gh cất trong kho bảo mật của hệ điều hành; AI không bao giờ đọc hay in token (`gh auth token` bị cấm).
+    phu_thuoc: [gh, github-account]
+    huong_dan: dang-nhap-github.md
+
+  - id: firebase-account
+    ten: Tài khoản Firebase (Google)
+    vi_sao: Để có nơi đưa app lên mạng.
+    goi: [web, day-du]
+    ai_lam: nguoi
+    huong_dan: firebase.md   # Phần 1
+
+  - id: firebase-login
+    ten: Đăng nhập Firebase trên máy
+    vi_sao: Để máy được phép đưa app lên Firebase của bạn.
+    goi: [web, day-du]
+    ai_lam: nguoi-dan-lenh   # lệnh tương tác, mở trình duyệt
+    kiem_tra: npx -y firebase-tools@latest login:list
+    kiem_tra_chuoi: "@"
+    cai:
+      macos: npx -y firebase-tools@latest login
+      windows: npx.cmd -y firebase-tools@latest login   # .cmd để tránh PowerShell chặn script npx.ps1
+    ghi_chu: >
+      Không cài công cụ Firebase vào máy (npm install -g dễ lỗi quyền với Node cài bằng .pkg).
+      Mọi lệnh Firebase chạy qua `npx -y firebase-tools@latest ...`. Lần chạy đầu tải về, hơi lâu — báo trước.
+      Người dùng có thể dán lệnh vào Terminal trong VS Code (Terminal → New Terminal).
+    phu_thuoc: [node, firebase-account]
+    huong_dan: firebase.md   # Phần 2

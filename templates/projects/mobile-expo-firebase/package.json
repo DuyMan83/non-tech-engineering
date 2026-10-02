@@ -1,0 +1,40 @@
+{
+  "name": "khung-du-an-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "node scripts/run.mjs",
+    "dev": "node scripts/run.mjs dev",
+    "build": "node scripts/build.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "check": "tsc --noEmit && eslint . && vitest run && npm run test:emulator",
+    "test": "vitest run",
+    "test:emulator": "firebase emulators:exec --only firestore --project demo-khung-du-an \"vitest run --config vitest.emulator.config.mts\""
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.26",
+    "expo-constants": "~57.0.20",
+    "expo-linking": "~57.0.11",
+    "expo-router": "~57.0.24",
+    "expo-status-bar": "~57.0.1",
+    "expo-updates": "~57.0.24",
+    "firebase": "^12.19.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
+    "@types/node": "^22.20.4",
+    "@types/react": "~19.2.2",
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "^57.0.2",
+    "firebase-tools": "^15.32.1",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.3"
+  }
+}

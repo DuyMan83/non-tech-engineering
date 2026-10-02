@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Cấu hình môi trường nằm trong config/*.env và ĐƯỢC commit (không chứa bí mật).
+# Không dùng file .env* — nếu lỡ tạo thì không commit.
+.env*
+
+# Firebase
+*-debug.log
+.firebase/
+
+.DS_Store
+
+# Đánh dấu đang kiểm thử độc lập (skill kiem-thu-doc-lap) — không commit
+.kiem-thu-dang-chay

@@ -1,0 +1,28 @@
+rules_version = '2';
+
+// Mặc định CHẶN HẾT. Mỗi collection mới phải mở rõ ràng + có test (tests/firestore.rules.test.ts).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Việc cần làm: mỗi người chỉ thấy và sửa việc của mình.
+    match /tasks/{taskId} {
+      function isSignedIn() { return request.auth != null; }
+      function ownedBy(data) { return isSignedIn() && data.ownerId == request.auth.uid; }
+      function isValidTask(data) {
+        return data.keys().hasAll(['ownerId', 'title', 'done', 'createdAt'])
+          && data.keys().hasOnly(['ownerId', 'title', 'done', 'createdAt'])
+          && data.title is string && data.title.size() > 0 && data.title.size() <= 200
+          && data.done is bool
+          && data.createdAt is int;
+      }
+
+      allow read, delete: if ownedBy(resource.data);
+      allow create: if ownedBy(request.resource.data) && isValidTask(request.resource.data);
+      allow update: if ownedBy(resource.data) && ownedBy(request.resource.data) && isValidTask(request.resource.data);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

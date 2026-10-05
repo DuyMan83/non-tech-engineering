@@ -6,6 +6,18 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại ở đây.
 ## [Unreleased]
 
 ### Added
+- TDD đầy đủ trong `thuc-thi-ke-hoach`:
+  - **Vòng ngoài:** mỗi chặng mở đầu bằng *test đích* (thường là test tích hợp của dòng nghiệm thu chính). Test đích phải đỏ trước, được cất tạm bằng `git stash` trong lúc làm các bước, và phải xanh trước khi hết chặng.
+  - **Vòng trong:** mỗi bước đi đỏ → xanh → **dọn lại** (lưu điểm riêng "Dọn lại: …", không đổi hành vi, không sửa test).
+- `kiem-tra-chang.mjs` chứng minh test được viết trước. Với mỗi lần lưu điểm (và phần chưa lưu), script chạy các ca test mới của lần đó trên code ngay trước nó, trong một git worktree tạm, cả unit lẫn test trên bộ giả lập.
+  - Ca mới mà xanh trên code cũ → ✖, trừ khi Ghi chép có dòng `Có sẵn: <tên ca>`.
+  - Script bắt thêm: test đích còn trong stash, lần "Dọn lại" có sửa test.
+- `lap-ke-hoach`: mỗi chặng trong "Bước kỹ thuật" phải có `Test đích: #N` — test tự động, đúng chặng; `kiem-tra-ke-hoach.mjs` kiểm.
+- Đã thử trên nhánh tính năng mẫu:
+  - Bắt được ca luật "có sẵn" chưa ghi đúng dạng; ghi `Có sẵn` xong thì qua.
+  - Lưu code trước rồi lưu test sau → bị bắt.
+  - Test và code lưu cùng nhau → qua.
+  - Phần chưa lưu, và file test mới import hàm chưa có → đếm đúng ca đỏ.
 - Hướng dẫn tổng quan `docs/guides/operational/cach-dung-bo-skill.md` cho người non-tech: luồng 7 skill, mỗi skill làm gì, bạn cần đưa gì, nhận được gì, phải làm gì; những việc không bao giờ phải làm và Claude luôn hỏi trước.
 - Khung thư mục ban đầu: `.claude/`, `agents/`, `docs/`, `scripts/`, `skills/claude/`, `skills/codex/`.
 - Template skill cho Claude (`skills/claude/_template`).

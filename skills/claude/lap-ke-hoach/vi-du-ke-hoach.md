@@ -89,9 +89,11 @@ Một chặng là đủ — việc nhỏ, mọi phần nằm trên một màn.
 
 ### Chặng 1 — Bạn dọn được danh sách bằng một nút
 
+Test đích: #1 — xoá việc đã xong của Alice qua kho dữ liệu thật thì chỉ việc đã xong của Alice biến mất.
+
 1. `domain`: hàm chọn việc đã xong — test #4.
 2. `services`: thêm "xoá việc của tôi" vào hợp đồng kho dữ liệu; use case "xoá việc đã xong" — test #5.
-3. `data`: Firestore xoá từng việc — test #1, #2.
+3. `data`: Firestore xoá từng việc — bỏ cất test đích #1 (phải xanh sau bước này), thêm test #2.
 4. Luật: thêm ca vào test luật — test #3.
 5. `ui`: nút + hộp xác nhận, khoá nút khi đang xoá, tải lại danh sách sau khi xoá.
 6. `npm run check` xanh.

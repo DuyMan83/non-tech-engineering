@@ -60,7 +60,8 @@ Liệt kê điều có thể hỏng — về dữ liệu, quyền, mất mạng,
 **Ma trận phủ.** Mỗi mã NT/TD → test nào phủ. Không mã nào trống.
 
 ### Bước 6 — Bước kỹ thuật
-Ngắn gọn, theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/clean-rules.md`. Mỗi bước ghi test đi kèm (# ở danh sách test). Cuối mỗi chặng luôn có: `npm run check` xanh → AI chạy app đi hết "Bạn tự thử" + chụp màn hình → **dừng cho người dùng tự thử**.
+Ngắn gọn, theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/clean-rules.md`. Mỗi bước ghi test đi kèm (# ở danh sách test).
+Mỗi chặng mở đầu bằng dòng **`Test đích: #N — …`**: test tự động nói "chặng này xong" (vòng ngoài của TDD), thường là test tích hợp của dòng nghiệm thu chính; phải là test tự động (không phải "giao diện") và thuộc đúng chặng đó. Ghi rõ ở bước nào test đích được bỏ cất và phải xanh. Cuối mỗi chặng luôn có: `npm run check` xanh → AI chạy app đi hết "Bạn tự thử" + chụp màn hình → **dừng cho người dùng tự thử**.
 
 ### Bước 7 — Kiểm tra và duyệt
 1. `node <thư mục skill>/kiem-tra-ke-hoach.mjs <ke-hoach.md> --de-xuat <de-xuat.md>` → phải ✔.
@@ -69,7 +70,7 @@ Ngắn gọn, theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/cl
 
 ### Bước 8 — Trong lúc làm
 Làm bằng skill **`thuc-thi-ke-hoach`**. Tóm tắt:
-- Làm từng chặng. Hết chặng: `npm run check` xanh, AI tự đi hết "Bạn tự thử", rồi **dừng** cho người dùng thử.
+- Làm từng chặng theo TDD: test đích của chặng trước (đỏ), rồi từng bước đỏ → xanh → dọn. Hết chặng: test đích xanh, `npm run check` xanh, `kiem-tra-chang.mjs` chứng minh mọi ca mới đỏ trên code trước nó, AI tự đi hết "Bạn tự thử", rồi **dừng** cho người dùng thử.
 - Ghi vào **Ghi chép trong lúc làm** theo ngày: đã làm gì, số test trước/sau, lỗi tìm ra và cách sửa, việc còn treo, lệch kế hoạch ở đâu.
 - Tìm ra lỗi khi thử → **viết test tái hiện lỗi trước**, rồi mới sửa.
 - Người dùng bảo bỏ qua điểm dừng → làm theo, nhưng ghi rõ rủi ro nào vì vậy còn treo.

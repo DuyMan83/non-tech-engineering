@@ -6,6 +6,7 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại ở đây.
 ## [Unreleased]
 
 ### Added
+- Hướng dẫn tổng quan `docs/guides/operational/cach-dung-bo-skill.md` cho người non-tech: luồng 7 skill, mỗi skill làm gì, bạn cần đưa gì, nhận được gì, phải làm gì; những việc không bao giờ phải làm và Claude luôn hỏi trước.
 - Khung thư mục ban đầu: `.claude/`, `agents/`, `docs/`, `scripts/`, `skills/claude/`, `skills/codex/`.
 - Template skill cho Claude (`skills/claude/_template`).
 - Script `install-skills.sh` và `new-skill.sh`.

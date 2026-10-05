@@ -6,6 +6,8 @@ Hướng dẫn vận hành: cài đặt môi trường, deploy, theo dõi, backu
 
 👉 [getting-started.md](getting-started.md) — Cài Claude, Git, tài khoản GitHub và bộ skill (người dùng tự làm, trước mọi thứ khác).
 
+👉 [cach-dung-bo-skill.md](cach-dung-bo-skill.md) — Tổng quan bộ skill: skill nào làm gì, bạn cần đưa gì, nhận được gì, phải làm gì.
+
 ## Thiết lập ban đầu (dùng bởi skill `thiet-lap-moi-truong`)
 
 | Hướng dẫn | Nội dung |

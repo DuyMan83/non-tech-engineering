@@ -64,9 +64,11 @@ Mỗi dòng nghiệm thu phải có **ít nhất một test tự động**, tr�
 
 ## Bước kỹ thuật
 
-Theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/clean-rules.md`. Viết test **trước hoặc cùng lúc** với code.
+Theo thứ tự "Thêm một tính năng" trong `docs/kien-truc/clean-rules.md`. Làm theo TDD (skill `thuc-thi-ke-hoach`): test đích của chặng viết đầu tiên và đỏ; mỗi bước trong: test trước (đỏ) → code (xanh) → dọn lại.
 
 ### Chặng 1 — {{tên}}
+
+Test đích: #{{N}} — {{test tự động nói "chặng này xong", thường là test tích hợp của dòng nghiệm thu chính}}
 
 1. {{lớp — việc — test đi kèm (# ở bảng)}}
 2. `npm run check` xanh.

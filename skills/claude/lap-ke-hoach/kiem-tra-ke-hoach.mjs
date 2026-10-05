@@ -79,6 +79,22 @@ if (tests.length > 0 && !tests.some((r) => r[1] === "tích hợp")) {
   loi.push("Danh sách test: không có test tích hợp nào — tích hợp phải được ưu tiên");
 }
 
+// 4b. Bước kỹ thuật: mỗi chặng có "Test đích: #N" — test tự động của đúng chặng đó (vòng ngoài của TDD)
+const buocKyThuat = section(text, /^## Bước kỹ thuật/m) ?? "";
+const changKT = [...buocKyThuat.matchAll(/^### Chặng (\d+)[^\n]*\n([\s\S]*?)(?=^### |(?![\s\S]))/gm)];
+if (soChang > 0 && changKT.length < soChang) loi.push(`Bước kỹ thuật: có ${soChang} chặng nhưng chỉ ${changKT.length} mục "### Chặng N"`);
+for (const [, n, body] of changKT) {
+  const so = body.match(/^Test đích:\s*#(\d+)/m)?.[1];
+  if (!so) {
+    loi.push(`Bước kỹ thuật chặng ${n}: thiếu dòng "Test đích: #N — ..."`);
+    continue;
+  }
+  const t = tests.find((r) => r[0] === so);
+  if (!t) loi.push(`Bước kỹ thuật chặng ${n}: test đích #${so} không có trong danh sách test`);
+  else if (t[1] === "giao diện") loi.push(`Bước kỹ thuật chặng ${n}: test đích #${so} là "giao diện" — phải là test tự động (tích hợp / luật / unit)`);
+  else if (t[5] !== n) loi.push(`Bước kỹ thuật chặng ${n}: test đích #${so} thuộc chặng ${t[5]}, không phải chặng ${n}`);
+}
+
 // 5. Ma trận phủ: mọi mã nghiệm thu đều có test tự động (hoặc lý do "chỉ thử tay")
 const ma = tableRows(section(text, /^## Đánh số nghiệm thu/m)).map((r) => r[0]);
 const maTran = new Map(tableRows(section(text, /^### Ma trận phủ nghiệm thu/m)).map((r) => [r[0], r[1] ?? ""]));

@@ -45,7 +45,7 @@ Sổ tay dự án — AI đọc file này đầu mỗi phiên và **cập nhật
 | {{NGAY_TAO}} | Tạo từ khung dự án `web-nextjs-firebase` | — |
 
 ## Đề xuất (`docs/de-xuat/`) và kế hoạch (`docs/ke-hoach/`)
-Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập kế hoạch (skill `lap-ke-hoach`), người dùng duyệt cả hai rồi mới code (skill `thuc-thi-ke-hoach`: nhánh `de-xuat/<ten>`, test trước, dừng cho người dùng thử hết mỗi chặng, nghiệm thu xong mới gộp vào `main`). Test theo rủi ro, ưu tiên test tích hợp (`tests/*.integration.test.ts`). "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
+Tính năng mới → viết đề xuất (skill `de-xuat-tinh-nang`) → lập kế hoạch (skill `lap-ke-hoach`), người dùng duyệt cả hai rồi mới code (skill `thuc-thi-ke-hoach`: nhánh `de-xuat/<ten>`, TDD: test đích của chặng trước rồi từng bước đỏ → xanh → dọn, dừng cho người dùng thử hết mỗi chặng, nghiệm thu xong mới gộp vào `main`). Test theo rủi ro, ưu tiên test tích hợp (`tests/*.integration.test.ts`). "Xong" = `npm run check` pass + người dùng thử hết checklist trong đề xuất.
 
 | Ngày | Đề xuất / kế hoạch | Trạng thái |
 |---|---|---|
